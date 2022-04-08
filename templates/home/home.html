@@ -1,0 +1,20 @@
+<!-- templates/home.html-->
+{% extends 'home/base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block login %}
+{% if user.is_authenticated %}
+  Hi {{ user.username }}!
+  <p><a href="{% url 'account:logout' %}">Log Out</a></p>
+{% else %}
+	<p>You are not logged in</p>
+	<ul>
+		<li><a href="{% url 'account:login' %}">Log In</a></li>
+		<li><a href="{% url 'account:register' %}">Register</a></li>
+	</ul>
+{% endif %}
+	{% block content %}
+	{% endblock %}
+{% endblock %}
+
