@@ -32,13 +32,17 @@ en gpi/settings.py
 Ejecutar proyecto:
 python3 manage.py runserver
 
+
 Un mensaje indicara la pagina donde se puede acceder. No hace falta correr de nuevo el servidor tras cada cambio, solo guardar fichero con cambios
 y Django lo detecta. Unica excepcion crear una app nueva, ahi hace falta correr de nuevo.
 
+Id a esa página desde el navegador, suele ser 127.0.0.1:8000
+Y añadid /home al final
+se suele acortar a localhost:8000/home
 
 La app polls no tiene que ver con nuestra practica, es un ejemplo que he hecho siguiendo el tutorial oficial para acostumbrarme a Django.
 Si quereis verlo es https://docs.djangoproject.com/en/4.0/intro/tutorial01/ y sucesivos
 Tambien tiene documentacion muy util https://docs.djangoproject.com/en/4.0/
 Echando un vistazo a los distintos ficheros podeis haceros una idea de como funciona
 
-A
+
