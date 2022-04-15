@@ -40,3 +40,5 @@ La app polls no tiene que ver con nuestra practica, es un ejemplo que he hecho s
 Si quereis verlo es https://docs.djangoproject.com/en/4.0/intro/tutorial01/ y sucesivos
 Tambien tiene documentacion muy util https://docs.djangoproject.com/en/4.0/
 Echando un vistazo a los distintos ficheros podeis haceros una idea de como funciona
+
+A
