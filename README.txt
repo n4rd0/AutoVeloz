@@ -45,4 +45,14 @@ Si quereis verlo es https://docs.djangoproject.com/en/4.0/intro/tutorial01/ y su
 Tambien tiene documentacion muy util https://docs.djangoproject.com/en/4.0/
 Echando un vistazo a los distintos ficheros podeis haceros una idea de como funciona
 
+---===========---
+RESUMEN:
 
+PRIMERA VEZ:
+$ git clone git@github.com:lbm364dl/gpi.git (El que pone en el github)
+$ pip instal django
+
+PARA INICIAR EL SERVIDOR:
+$ python3 manage.py runserver
+Chrome/Firefox: ir a localhost:8000/home (Suele ser 8000, de todos modos lo pone)
+---===========---

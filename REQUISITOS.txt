@@ -1,0 +1,13 @@
+Backend:
+	Bases de datos: Registro/Inicio de sesión, ofrecer una lista con los coches, los pagos y las reservas
+
+Segundo ciclo:
+	Si algo faltase del primero, añadirlo
+
+Frontend:
+	Navegación entre las diferentes páginas
+	Formularios
+	Mínimo de mejora visual
+
+Segundo ciclo:
+	Mejoras visuales
