@@ -32,7 +32,13 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'polls.apps.PollsConfig',
+    'paginaprincipal.apps.PaginaprincipalConfig',
+    'coches_disponibles.apps.CochesDisponiblesConfig',
+    'recogida_entrega.apps.RecogidaEntregaConfig',
+    'tarifas_disponibles.apps.TarifasDisponiblesConfig',
+    'modificar_reserva.apps.ModificarReservaConfig',
     'registration.apps.RegistrationConfig',
+    'eliminar_reserva.apps.EliminarReservaConfig',
     'account.apps.AccountConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -128,5 +134,5 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL = '/account/login/'
-LOGIN_REDIRECT_URL = '/polls/'
+LOGIN_REDIRECT_URL = '/welcome/'
 LOGOUT_REDIRECT_URL = '/home/'
