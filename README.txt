@@ -52,6 +52,9 @@ PRIMERA VEZ:
 $ git clone git@github.com:lbm364dl/gpi.git (El que pone en el github)
 $ pip instal django
 
+CADA VEZ QUE SE BORRA EL CACHE:
+$ python3 manage.py migrate
+
 PARA INICIAR EL SERVIDOR:
 $ python3 manage.py runserver
 Chrome/Firefox: ir a localhost:8000/home (Suele ser 8000, de todos modos lo pone)
