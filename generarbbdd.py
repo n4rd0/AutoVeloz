@@ -1,4 +1,8 @@
-from account.models import *
+from account.models import Usuario, TiposDeUsuarios
+from modificar_reserva.models import Reserva, Extras, Descuentos
+from tarifas_disponibles.models import Tarifas
+from coches_disponibles.models import Coches, Opciones, TiposDeGamas, TiposDeEstados
+from recogida_entrega.models import Oficina
 
 """
 class TiposDeGamas(models.TextChoices):
