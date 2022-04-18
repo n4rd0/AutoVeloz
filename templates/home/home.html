@@ -5,16 +5,15 @@
 
 {% block login %}
 {% if user.is_authenticated %}
-  Hi {{ user.username }}!
-  <p><a href="{% url 'account:logout' %}">Log Out</a></p>
+  Hola, {{ user.username }}
+  <p><a href="{% url 'account:logout' %}">Cerrar sesión</a></p>
 {% else %}
-	<p>You are not logged in</p>
+	<p>No has iniciado sesión.</p>
 	<ul>
-		<li><a href="{% url 'account:login' %}">Log In</a></li>
-		<li><a href="{% url 'account:register' %}">Register</a></li>
+		<li><a href="{% url 'account:login' %}">Iniciar sesión</a></li>
+		<li><a href="{% url 'account:register' %}">Registro</a></li>
 	</ul>
 {% endif %}
 	{% block content %}
 	{% endblock %}
 {% endblock %}
-
