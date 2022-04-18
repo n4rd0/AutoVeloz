@@ -50,7 +50,7 @@ RESUMEN:
 
 PRIMERA VEZ:
 $ git clone git@github.com:lbm364dl/gpi.git (El que pone en el github)
-$ pip instal django
+$ pip install django
 
 CADA VEZ QUE SE BORRA EL CACHE:
 $ python3 manage.py migrate
