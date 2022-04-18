@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'recogida_entrega.apps.RecogidaEntregaConfig',
     'tarifas_disponibles.apps.TarifasDisponiblesConfig',
     'modificar_reserva.apps.ModificarReservaConfig',
-    'registration.apps.RegistrationConfig',
     'eliminar_reserva.apps.EliminarReservaConfig',
     'account.apps.AccountConfig',
     'django.contrib.admin',
