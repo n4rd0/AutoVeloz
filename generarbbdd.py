@@ -6,6 +6,23 @@ from coches_disponibles.models import Coches, Opciones, TiposDeGamas, TiposDeEst
 from recogida_entrega.models import Oficina
 
 """
+Para tener las tablas actualizadas:
+python3 manage.py migrate
+
+Para ejecutar este script:
+
+Linux al menos:
+    echo 'import generarbbdd' | python3 manage.py shell
+
+Windows o Linux:
+    python3 manage.py shell
+    Dentro del shell hacer
+    import generarbbdd
+
+En el shell normal de Python no sirve, usar lo anterior
+"""
+
+"""
 class TiposDeGamas(models.TextChoices):
      ALTA = 'Alta'
      MEDIA = 'Media'
