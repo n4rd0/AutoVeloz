@@ -1,0 +1,8 @@
+
+Objetos entre comillas son solo temporales mientras no exista otro lugar
+
+Usuario, TiposDeUsuarios : account/models.py
+Reserva, Extras", Descuentos" : modificar_reserva/models.py
+Tarifas : tarifas_disponibles/models.py
+Coches, Opciones, TiposDeGamas, TiposDeEstados : coches_disponibles/models.py
+Oficina : recogida_entrega
