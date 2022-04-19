@@ -1,5 +1,7 @@
 {% include 'home/navbar.html'%}
 
 <h1>Lista de Tarifas Disponibles</h1>
-
+	{% for tarifa in tarifas %}
+	{{tarifa}} <br>
+	{% endfor %}
 <hr>

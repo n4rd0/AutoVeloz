@@ -11,7 +11,9 @@
 	<div class="Coches">
 		{% for coche in coches %}
 			<div class="coche">
-				<h2><a href="{{coche.marca}}">{{coche.marca}} {{coche.modelo}}</a></h2>
+				<!-- donde pone 1 habria que mandar la temporada (1, 2 o 3), esto es un ejemplo solo
+				habria que pedir fecha y poner este link donde sea necesario-->
+				<h2><a href= {% url 'tarifas:tarifas_disponibles' coche.gama 1%}>{{coche.marca}} {{coche.modelo}}</a></h2>
 
 				<p>{{coche.gama}}</p>
 				<p>{{coche.id_oficina}}</p>
