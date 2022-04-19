@@ -53,7 +53,14 @@ $ git clone git@github.com:lbm364dl/gpi.git (El que pone en el github)
 $ pip install django
 
 CADA VEZ QUE SE BORRA EL CACHE:
+$ python3 manage.py makemigrations <carpetas con modelos>
+	ahora mismo es: paginaprincipal modificar_reserva recogida_entrega tarifas_disponibles coches_disponibles eliminar_reserva account
 $ python3 manage.py migrate
+$ echo "import generarbbdd" | python3 manage.py shell
+	O $python3 manage.py shell y escribir a mano (Se sale con Ctrl+D)
+
+O BIEN EJECUTAR (LINUX):
+$ sh migrar.sh
 
 PARA INICIAR EL SERVIDOR:
 $ python3 manage.py runserver

@@ -7,7 +7,7 @@ from recogida_entrega.models import Oficina
 
 """
 Para tener las tablas actualizadas:
-python3 manage.py makemigrations
+python3 manage.py makemigrations <lista de directorios con modelos, excluir polls/__pycache__/templates/gpi>
 python3 manage.py migrate
 
 Para ejecutar este script:
