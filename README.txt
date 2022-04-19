@@ -59,6 +59,9 @@ $ python3 manage.py migrate
 $ echo "import generarbbdd" | python3 manage.py shell
 	O $python3 manage.py shell y escribir a mano (Se sale con Ctrl+D)
 
+O BIEN EJECUTAR (LINUX):
+$ sh migrar.sh
+
 PARA INICIAR EL SERVIDOR:
 $ python3 manage.py runserver
 Chrome/Firefox: ir a localhost:8000/home (Suele ser 8000, de todos modos lo pone)
