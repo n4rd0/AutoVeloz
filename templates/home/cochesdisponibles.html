@@ -1,5 +1,26 @@
 {% include 'home/navbar.html'%}
 
-<h1>Lista de Coches Disponibles</h1>
+<<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Coches</title>
+</head>
+<body>
+	<h1>Lista de coches</h1>
+	<div class="coches">
+		{% for coche in Coches %}
+			<div class="coche">
+				<h2><a href="{{coche.marca}}">{{coche.marca}} {{coche.modelo}}</a></h2>
 
-<hr>
+				<p>{{coche.gama}}</p>
+				<p>{{coche.id_oficina}}</p>
+				<p>{{coche.estado}}</p>
+				
+			</div>
+
+
+		{% endfor %}
+	</div>
+</body>
+</html>
