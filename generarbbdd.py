@@ -56,7 +56,7 @@ user_data = {
         'first_name' : 'Nombre',
         'last_name' : 'Apellidos',
         'email' : 'correofalso@yopmail.com',
-        'password' : 'Pass_word42',
+        'password' : 'pass',
     }
 # usuario de Django necesario para que lo reconozca en login
 auth_user = User.objects.create_user(**user_data)
