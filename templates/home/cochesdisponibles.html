@@ -10,7 +10,7 @@
 			margin-bottom: 2%;
 			border-style: solid;
 			border-width: 2px;
-			width: 50%;
+			width: 60%;
 			background-image: "fotos_temp/coche1.png";
 		}
 		.column{
@@ -49,10 +49,10 @@
 						<img src="https://www.pngmart.com/files/3/BMW-X5-PNG-File.png" alt= "imagen coche" width="400" height="270">
 						{% endif %}
 						{% if coche.modelo == "Ibiza" %}
-						<img src="https://lamangarentacar.com/sites/default/files/styles/large/public/field/image/SEAT%20IBIZA.png" alt= "imagen coche" width="480" height="270">
+						<img src="https://www.alquiber.es/wp-content/uploads/2020/11/seat-ibiza.png" alt= "imagen coche" width="430" height="270">
 						{% endif %}
 						{% if coche.modelo == "Multipla" %}
-						<img src="https://ik.imagekit.io/2ero5nzbxo2/FILES/generations/QF4sm55jOryvQbeC2NN9SXiczkDKfjlLZBmj8Ywm.png?ik-sdk-version=php-2.0.0" alt= "imagen coche" width="400" height="230">
+						<img src="https://ik.imagekit.io/2ero5nzbxo2/FILES/generations/QF4sm55jOryvQbeC2NN9SXiczkDKfjlLZBmj8Ywm.png?ik-sdk-version=php-2.0.0" alt= "imagen coche" width="400" height="270">
 						{% endif %}
 					</a>
 				</div>
@@ -61,9 +61,7 @@
 					<p>Marca: {{coche.marca}}</p>
 					<p>Modelo: {{coche.modelo}}</p>
 					<p>Gama: {{coche.gama}}</p>
-					<p>Sucursal Encargada: {{coche.id_oficina}}</p>
-					<p>Estado del Coche: {{coche.estado}}</p>
-
+					<p>Sucursal Encargada: {{coche.oficina}}</p>
 				</div>
 			</div>
 		</div>

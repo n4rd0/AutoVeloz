@@ -10,8 +10,8 @@
 {% else %}
 	<p>No has iniciado sesión.</p>
 	<ul>
-		<li><a href="{% url 'account:login' %}">Iniciar sesión</a></li>
-		<li><a href="{% url 'account:register' %}">Registro</a></li>
+		<li><a href="{% url 'account:login' %}"><button> Iniciar sesión</button></a></li>
+		<li><a href="{% url 'account:register' %}"><button> Registro</button></a></li>
 	</ul>
 {% endif %}
 	{% block content %}

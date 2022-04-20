@@ -9,14 +9,14 @@ h3{font-style: italic;
 
 
 	<h1>Reservas</h1>
-	<h3>Seleccione por favor la temporada en la que desea realizar la reserva.</h3>
+	<h3>Cancele o modifique sus reservas.</h3>
 
 	<hr>
 	
 	{% for reserva in reservas %}
 	{{reserva}} <br>
-	<button><a href= {% url 'reservas:modificar_reserva' reserva.id %}> Modificar Reserva</a></button>
-	<button><a href= /eliminar_reserva/1 >Eliminar Reserva</a></button>
+	<a href= {% url 'reservas:modificar_reserva' reserva.id %}><button> Modificar Reserva</button></a>
+	<a href= /eliminar_reserva/1 ><button>Eliminar Reserva</button></a>
 
 	<hr>
 	{% endfor %}
