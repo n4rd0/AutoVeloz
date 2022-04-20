@@ -147,7 +147,7 @@ ex1.save()
 Coches.objects.all().delete()
 
 #Generar dato
-Coches(oficina=of1, marca="Mercedes", modelo="GLC 43", gama=TiposDeGamas.ALTA, estado=TiposDeEstados.NO_DISPONIBLE).save()
+Coches(oficina=of1, marca="Mercedes", modelo="GLC 43", gama=TiposDeGamas.ALTA, estado=TiposDeEstados.LIBRE).save()
 
 c1 = Coches(oficina=of2, marca="Seat", modelo="Ibiza", gama=TiposDeGamas.BAJA, estado=TiposDeEstados.LIBRE)
 c2 = Coches(oficina=of2, marca="BMW", modelo="X5", gama=TiposDeGamas.ALTA, estado=TiposDeEstados.LIBRE)

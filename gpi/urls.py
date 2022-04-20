@@ -23,7 +23,7 @@ urlpatterns = [
     path('recogida_entrega/', include('recogida_entrega.urls')),
     path('coches_disponibles/', include('coches_disponibles.urls')),
     path('tarifas_disponibles/', include('tarifas_disponibles.urls')),
-    path('modificar_reserva/', include('modificar_reserva.urls')),
+    path('reservas/', include('modificar_reserva.urls')),
     path('eliminar_reserva/', include('eliminar_reserva.urls')),
     path('welcome/', include('paginaprincipal.urls')),
     path('account/', include('account.urls')),

@@ -9,6 +9,6 @@ class MyUserForm(forms.Form):
     first_name = forms.CharField(label = 'Nombre', max_length = largeText)
     last_name = forms.CharField(label = 'Apellidos', max_length = largeText)
     email = forms.CharField(label = 'Correo', max_length = largeText)
-    password = forms.CharField(label = 'Contraseña', max_length = smallText)
-    password_re = forms.CharField(label = 'Repetir contraseña', max_length = smallText)
+    password = forms.CharField(widget = forms.PasswordInput, label = 'Contraseña', max_length = smallText)
+    password_re = forms.CharField(widget = forms.PasswordInput, label = 'Repetir contraseña', max_length = smallText)
     user_type = forms.ChoiceField(label = 'Tipo usuario', choices = TiposDeUsuarios.choices)

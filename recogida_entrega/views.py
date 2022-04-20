@@ -49,7 +49,7 @@ def recogida_entrega(request, id_coche, id_tarifa):
                         tarifa = Tarifas.objects.get(id = id_tarifa),
                         usuario = Usuario.objects.get(dni = request.user.username),
                     )
-                return HttpResponseRedirect('/modificar_reserva/')
+                return HttpResponseRedirect('/reservas/')
         else:
             form = forms.crearReserva()
             return render(request, 'home/recogida.html', {'form' : form})
