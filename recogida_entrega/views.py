@@ -34,14 +34,14 @@ def recogida_entrega(request, id_coche, id_tarifa):
             dev = datetime.datetime.combine(dat['fecha_dev'], dat['hora_dev'])
             # ver mensajes de error personalizados en forms.py
             if not re.match(r'^[0-9]{16}$', post['tarjeta_credito']):
-                dat['tarjeta_credito'] = 'invalid'
+                dat['tarjeta_credito'] = ''
                 form = forms.crearReserva(dat)
                 return render(request, 'home/recogida.html', {'form' : form})
             if get_temporada(dat['fecha_rec']) != tarifa.temporada:
                 dat['fecha_rec'] = ''
                 form = forms.crearReserva(dat)
                 return render(request, 'home/recogida.html', {'form' : form})
-            elif dev <= rec:
+            elif dev <= rec or rec <= datetime.datetime.now():
                 dat['fecha_rec'] = 'invalid'
                 form = forms.crearReserva(dat)
                 return render(request, 'home/recogida.html', {'form' : form})

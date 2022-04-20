@@ -36,9 +36,9 @@ class crearReserva(forms.ModelForm):
         error_messages = {
             'fecha_rec': {
                 'required': 'El mes de recogida debe ser de la temporada elegida',
-                'invalid': 'La devolución debe ser después de la recogida',
+                'invalid': 'Las fechas deben ser consistentes',
             },
             'tarjeta_credito': {
-                'invalid': 'La tarjeta tiene que ser 16 dígitos',
+                'required': 'La tarjeta debe tener 16 dígitos',
             },
         }
