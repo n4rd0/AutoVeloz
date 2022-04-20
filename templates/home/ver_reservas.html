@@ -17,7 +17,7 @@ body{background-color: rgb(189, 191, 192);}
 	{% for reserva in reservas %}
 	{{reserva}} <br>
 	<a href= {% url 'reservas:modificar_reserva' reserva.id %}><button> Modificar Reserva</button></a>
-	<a href= /eliminar_reserva/1 ><button>Eliminar Reserva</button></a>
+	<a href= {% url 'reservas_:eliminar_reserva' reserva.id %}><button> Eliminar Reserva</button></a>
 
 	<hr>
 	{% endfor %}
