@@ -1,7 +1,14 @@
 <!-- templates/registration/register.html -->
+
+<style>
+	button{font-size: large;margin-top:20px; margin-bottom: 20px;}
+	body{background-color: rgb(189, 191, 192);}
+</style>
+<body>
 <h2>Registro</h2>
 <form method="post">
   {% csrf_token %}
   {{ form.as_p }}
   <button type="submit">Registrarse</button>
 </form>
+</body>
