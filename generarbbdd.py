@@ -147,10 +147,12 @@ ex1.save()
 Coches.objects.all().delete()
 
 #Generar dato
-Coches(id_oficina=of1, marca="Marca del coche", modelo="Modelo del coche", gama=TiposDeGamas.ALTA, estado=TiposDeEstados.NO_DISPONIBLE).save()
+Coches(id_oficina=of1, marca="Mercedes", modelo="GLC 43", gama=TiposDeGamas.ALTA, estado=TiposDeEstados.NO_DISPONIBLE).save()
 
-c1 = Coches(id_oficina=of2, marca="Marca del coche 2", modelo="Modelo del coche 2", gama=TiposDeGamas.BAJA, estado=TiposDeEstados.LIBRE)
+c1 = Coches(id_oficina=of2, marca="Seat", modelo="Ibiza", gama=TiposDeGamas.BAJA, estado=TiposDeEstados.LIBRE)
+c2 = Coches(id_oficina=of2, marca="BMW", modelo="X5", gama=TiposDeGamas.ALTA, estado=TiposDeEstados.LIBRE)
 c1.save()
+c2.save()
 
 
 #/////////////////OPCIONES/////////////////

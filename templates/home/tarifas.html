@@ -1,7 +1,39 @@
 {% include 'home/navbar.html'%}
 
+<style>
+	.column{
+		float: left;
+		width: 25%;
+		text-align: center;
+	}
+	.row.after{
+		content: "";
+		display: table;
+		clear: both;
+	}
+
+	h3{font-style: italic;
+	font-weight: 200;}
+
+	button{
+		font-size: 
+		large;margin-top:100px;
+	}
+
+</style>
+
 <h1>Lista de Tarifas Disponibles</h1>
-	{% for tarifa in tarifas %}
-	<h2><a href= {% url 'recogida_entrega:reserva' id_coche tarifa.id%}>{{tarifa}}</a></h2>
-	{% endfor %}
+<h3>Seleccione la tarifa deseada.</h3>
 <hr>
+
+	
+		{% for tarifa in tarifas %}
+		<div class="row">
+			<div class="column">
+				<button><a href= {% url 'recogida_entrega:reserva' id_coche tarifa.id%}>Temporada {{tarifa.temporada}} con precio {{tarifa.precio}}</a></button>
+			</div>
+		</div>
+		{% endfor %}
+	
+
+
