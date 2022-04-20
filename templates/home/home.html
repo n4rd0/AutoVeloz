@@ -1,4 +1,9 @@
 <!-- templates/home.html-->
+<style>
+	button{font-size: large;margin-top:20px; margin-bottom: 20px;}
+	body{background-color: rgb(189, 191, 192);}
+</style>
+<body>
 {% extends 'home/base.html' %}
 
 {% block title %}Home{% endblock %}
@@ -6,7 +11,7 @@
 {% block login %}
 {% if user.is_authenticated %}
   Hola, {{ user.username }}
-  <p><a href="{% url 'account:logout' %}">Cerrar sesión</a></p>
+  <p><a href="{% url 'account:logout' %}"><button> Cerrar sesión</button></a></p>
 {% else %}
 	<p>No has iniciado sesión.</p>
 	<ul>
@@ -17,3 +22,4 @@
 	{% block content %}
 	{% endblock %}
 {% endblock %}
+</body>

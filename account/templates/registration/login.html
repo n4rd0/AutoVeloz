@@ -1,7 +1,13 @@
 <!-- templates/registration/login.html -->
+<style>
+	button{font-size: large;margin-top:20px; margin-bottom: 20px;}
+	body{background-color: rgb(189, 191, 192);}
+</style>
+<body>
 <h2>Iniciar sesión</h2>
 <form method="post">
   {% csrf_token %}
   {{ form.as_p }}
   <button type="submit">Iniciar sesión</button>
 </form>
+</body>
