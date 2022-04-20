@@ -13,7 +13,7 @@
 			<div class="coche">
 				<!-- donde pone 1 habria que mandar la temporada (1, 2 o 3), esto es un ejemplo solo
 				habria que pedir fecha y poner este link donde sea necesario-->
-				<h2><a href= {% url 'tarifas:tarifas_disponibles' coche.gama 1%}>{{coche.marca}} {{coche.modelo}}</a></h2>
+				<h2><a href= {% url 'tarifas:temporadas' coche.id%}>{{coche.marca}} {{coche.modelo}}</a></h2>
 
 				<p>{{coche.gama}}</p>
 				<p>{{coche.id_oficina}}</p>

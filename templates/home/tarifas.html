@@ -2,6 +2,6 @@
 
 <h1>Lista de Tarifas Disponibles</h1>
 	{% for tarifa in tarifas %}
-	{{tarifa}} <br>
+	<h2><a href= {% url 'recogida_entrega:reserva' id_coche tarifa.id%}>{{tarifa}}</a></h2>
 	{% endfor %}
 <hr>
