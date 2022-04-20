@@ -41,8 +41,8 @@ class Reserva(models.Model):
      tarjeta_credito = models.CharField(max_length=16)
 
      def __str__(self):
-        return f'Coche {self.coche}, Oficina recogida {self.oficina_rec}'
-        
+        return f'Coche {self.coche}, Oficina recogida {self.oficina_rec}, Oficina devolución {self.oficina_dev}'
+
 class Descuentos(models.Model):
      porcentaje = models.DecimalField(max_digits=3, decimal_places=2)
      def __str__(self):
