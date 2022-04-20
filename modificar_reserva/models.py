@@ -38,6 +38,7 @@ class Reserva(models.Model):
      fecha_dev = models.DateField()
      hora_rec = models.TimeField()
      hora_dev = models.TimeField()
+     #tarjeta_credito = models.CharField(max_length=16)
      tarjeta_credito = models.IntegerField()
      def __str__(self):
         return f'Coche {self.coche}, Oficina recogida {self.oficina_rec}'

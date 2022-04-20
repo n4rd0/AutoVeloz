@@ -38,4 +38,7 @@ class crearReserva(forms.ModelForm):
                 'required': 'El mes de recogida debe ser de la temporada elegida',
                 'invalid': 'La devolución debe ser después de la recogida',
             },
+            'tarjeta_credito': {
+                'invalid': 'La tarjeta tiene que ser 16 dígitos',
+            },
         }
