@@ -4,6 +4,7 @@ from modificar_reserva.models import Reserva, Extras, Descuentos
 from tarifas_disponibles.models import Tarifas, TiposDeTarifas
 from coches_disponibles.models import Coches, Opciones, TiposDeGamas, TiposDeEstados
 from recogida_entrega.models import Oficina
+import datetime
 
 """
 Para tener las tablas actualizadas:
@@ -118,7 +119,7 @@ t39 = Tarifas.objects.create(tipo=TiposDeTarifas.LARGA_DURACION, gama=TiposDeGam
 Oficina.objects.all().delete()
 
 #Generar dato sin facturado
-of1 = Oficina(ciudad="Madrid")
+of1 = Oficina(ciudad="Madrid", facturado = 299.12)
 of1.save()
 
 #Generar dato con facturado dado
@@ -172,18 +173,19 @@ opc1.save()
 Reserva.objects.all().delete()
 
 #Generar dato
-r1 = Reserva(
+now = datetime.datetime.now()
+r1 = Reserva.objects.create(
     usuario=user, 
     oficina_rec=of1, 
     oficina_dev=of1, 
     coche=c1, 
     tarifa=t1, 
-    fecha_rec='2020-05-01', 
-    fecha_dev='2020-05-26', 
-    hora_rec='15:00:00', 
-    hora_dev='9:30:00', 
-    tarjeta_credito=1234567890123456
-).save()
+    fecha_rec= now.date(),
+    fecha_dev= (now + datetime.timedelta(days = 3)),
+    hora_rec= now.time(),
+    hora_dev= (now + datetime.timedelta(hours = 6)),
+    tarjeta_credito = 1234567890123456,
+)
 
 #Añadir extra
 r1.extra.add(ex1)

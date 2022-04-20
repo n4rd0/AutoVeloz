@@ -12,7 +12,9 @@ def ver_reservas(request):
 def modificar_reserva(request, id_reserva):
     reserva = Reserva.objects.get(id = id_reserva)
     print(reserva)
-    form = crearReserva(instance = reserva)
+    form = crearReserva(instance = reserva, initial = {'fecha_rec' : reserva.fecha_rec})
+    print(form)
+    print(form.fields)
 
     if request.method == 'GET':
         return render(request, 'home/modificar_reserva.html', {'form' : form})
