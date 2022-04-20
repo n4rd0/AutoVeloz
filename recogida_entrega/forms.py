@@ -12,8 +12,7 @@ class crearReserva(forms.ModelForm):
     class Meta: 
         model = models.Reserva
         fields = [ 
-                'id_oficina_rec',
-                'id_oficina_dev',
+                'oficina_dev',
                 'fecha_rec',
                 'hora_rec',
                 'fecha_dev',
@@ -27,11 +26,16 @@ class crearReserva(forms.ModelForm):
             'hora_dev': TimeInput()
         }
         labels = { 
-                'id_oficina_rec' : 'Oficina recogida', 
-                'id_oficina_dev' : 'Oficina devolución', 
+                'oficina_dev' : 'Oficina devolución', 
                 'fecha_rec' : 'Fecha recogida',
                 'fecha_dev' : 'Fecha devolución',
                 'hora_rec' : 'Hora recogida',
                 'hora_dev' : 'Hora devolución',
                 'tarjeta_credito' : 'Tarjeta de crédito',
-            }
+        }
+        error_messages = {
+            'fecha_rec': {
+                'required': 'El mes de recogida debe ser de la temporada elegida',
+                'invalid': 'La devolución debe ser después de la recogida',
+            },
+        }

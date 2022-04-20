@@ -1,5 +1,25 @@
 {% include 'home/navbar.html'%}
 
-<h1>Modificar Reserva</h1>
+<style>
 
-<hr>
+button{font-size: large;margin-top:20px; margin-bottom: 20px;}
+h3{font-style: italic;
+		font-weight: 200;}
+</style>
+
+
+	<h1>Reservas</h1>
+	<h3>Seleccione por favor la temporada en la que desea realizar la reserva.</h3>
+
+	<hr>
+	
+	{% for reserva in reservas %}
+	{{reserva}} <br>
+	<button><a href= "/modificar_reserva/1/" >Modificar Reserva</a></button>
+	<button><a href= "/modificar_reserva/1/" >Eliminar Reserva</a></button>
+
+	<hr>
+	{% endfor %}
+
+
+

@@ -147,10 +147,10 @@ ex1.save()
 Coches.objects.all().delete()
 
 #Generar dato
-Coches(id_oficina=of1, marca="Mercedes", modelo="GLC 43", gama=TiposDeGamas.ALTA, estado=TiposDeEstados.NO_DISPONIBLE).save()
+Coches(oficina=of1, marca="Mercedes", modelo="GLC 43", gama=TiposDeGamas.ALTA, estado=TiposDeEstados.NO_DISPONIBLE).save()
 
-c1 = Coches(id_oficina=of2, marca="Seat", modelo="Ibiza", gama=TiposDeGamas.BAJA, estado=TiposDeEstados.LIBRE)
-c2 = Coches(id_oficina=of2, marca="BMW", modelo="X5", gama=TiposDeGamas.ALTA, estado=TiposDeEstados.LIBRE)
+c1 = Coches(oficina=of2, marca="Seat", modelo="Ibiza", gama=TiposDeGamas.BAJA, estado=TiposDeEstados.LIBRE)
+c2 = Coches(oficina=of2, marca="BMW", modelo="X5", gama=TiposDeGamas.ALTA, estado=TiposDeEstados.LIBRE)
 c1.save()
 c2.save()
 
@@ -160,7 +160,7 @@ c2.save()
 Opciones.objects.all().delete()
 
 #Generar dato
-opc1 = Opciones(id_coche=c1, opcion="Opcion disponible para el coche")
+opc1 = Opciones(coche=c1, opcion="Opcion disponible para el coche")
 opc1.save()
 
 
@@ -169,17 +169,17 @@ opc1.save()
 Reserva.objects.all().delete()
 
 #Generar dato
-r1 = Reserva(id_usuario=user, id_oficina_rec=of1, id_oficina_dev=of1, id_coche=c1, id_tarifa=t1, fecha_rec='2020-05-01', fecha_dev='2020-05-26', hora_rec='15:00:00', hora_dev='9:30:00', tarjeta_credito=1234567890123456)
+r1 = Reserva(usuario=user, oficina_rec=of1, oficina_dev=of1, coche=c1, tarifa=t1, fecha_rec='2020-05-01', fecha_dev='2020-05-26', hora_rec='15:00:00', hora_dev='9:30:00', tarjeta_credito=1234567890123456)
 r1.save()
 
 #Añadir extra
-r1.id_extra.add(ex1)
+r1.extra.add(ex1)
 
 #Repetir no añade duplicados
-r1.id_extra.add(ex1)
+r1.extra.add(ex1)
 
 #Añadir opciones
-r1.id_opciones.add(opc1)
+r1.opciones.add(opc1)
 
 #Repetir no añade duplicados
-r1.id_opciones.add(opc1)
+r1.opciones.add(opc1)
