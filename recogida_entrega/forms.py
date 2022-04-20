@@ -2,11 +2,12 @@ from django import forms
 from modificar_reserva import models
 
 class DateInput(forms.DateInput):
-    input_format = '%d/%m/%Y'
+    #input_format no funciona
+    #input_format = '%d/%m/%Y'
     input_type = 'date'
 
 class TimeInput(forms.TimeInput):
-	input_format ='%M:%H' 
+	#input_format ='%M:%H' 
 	input_type = 'time'
 
 class crearReserva(forms.ModelForm):
@@ -21,7 +22,7 @@ class crearReserva(forms.ModelForm):
                 'tarjeta_credito',
             ]
         widgets = {
-            'fecha_rec' : forms.DateInput(format=('%d-%m-%Y')),#DateInput(format = '%d/%m/%Y'),
+            'fecha_rec' : DateInput(),#forms.DateInput(format=('%d-%m-%Y')),#DateInput(format = '%d/%m/%Y'),
             'fecha_dev' : DateInput(),
             'hora_rec': TimeInput(),
             'hora_dev': TimeInput()
