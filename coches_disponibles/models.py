@@ -15,7 +15,7 @@ class TiposDeEstados(models.TextChoices):
      NO_DISPONIBLE = 'No disponible'
      
 class Coches(models.Model):
-     id_oficina = models.ForeignKey(
+     oficina = models.ForeignKey(
           Oficina,
           on_delete=models.CASCADE
      )
@@ -27,10 +27,10 @@ class Coches(models.Model):
         return self.marca + ' ' + self.modelo
      
 class Opciones(models.Model):
-     id_coche = models.ForeignKey(
+     coche = models.ForeignKey(
            Coches,
            on_delete = models.CASCADE
      )
      opcion = models.CharField(max_length = largeText)
      def __str__(self):
-        return self.id_coche + ' opcion: ' + self.opcion
+        return str(self.coche) + ' opcion: ' + self.opcion

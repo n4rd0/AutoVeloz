@@ -10,37 +10,37 @@ class Extras(models.Model):
         return self.extra
 
 class Reserva(models.Model):
-     id_usuario = models.ForeignKey(
+     usuario = models.ForeignKey(
           Usuario,
           on_delete = models.CASCADE
      )
-     id_oficina_rec = models.ForeignKey(
+     oficina_rec = models.ForeignKey(
           Oficina,
           on_delete = models.CASCADE,
           related_name = 'lugar_recogida'
      )
-     id_oficina_dev = models.ForeignKey(
+     oficina_dev = models.ForeignKey(
           Oficina,
           on_delete = models.CASCADE,
           related_name = 'lugar_devolucion'
      )
-     id_coche = models.ForeignKey(
+     coche = models.ForeignKey(
           Coches,
           on_delete = models.CASCADE
      )
-     id_tarifa = models.ForeignKey(
+     tarifa = models.ForeignKey(
           Tarifas,
           on_delete = models.CASCADE
      )
-     id_extra = models.ManyToManyField(Extras)
-     id_opciones = models.ManyToManyField(Opciones)
+     extra = models.ManyToManyField(Extras)
+     opciones = models.ManyToManyField(Opciones)
      fecha_rec = models.DateField()
      fecha_dev = models.DateField()
      hora_rec = models.TimeField()
      hora_dev = models.TimeField()
      tarjeta_credito = models.IntegerField()
      def __str__(self):
-        return 'Coche ' + self.id_coche
+        return f'Coche {self.coche}, Oficina recogida {self.oficina_rec}'
         
 class Descuentos(models.Model):
      porcentaje = models.DecimalField(max_digits=3, decimal_places=2)
