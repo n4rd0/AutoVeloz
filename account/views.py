@@ -17,7 +17,8 @@ def register(request):
             ok_format = True
 
             # se pone dni como username en el User de Django
-            if not re.match(r'^[A-Z0-9]\d{7}[A-Z]$', post['username']):
+            if Usuario.objects.filter(dni = my_user.cleaned_data['username']) \
+                    or not re.match(r'^[A-Z0-9]\d{7}[A-Z]$', post['username']):
                 ok_format = False
                 my_user.cleaned_data['username'] = ''
             if post['password'] != post['password_re']:

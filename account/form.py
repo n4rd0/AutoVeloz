@@ -5,7 +5,7 @@ largeText = 128
 smallText = 64
 
 class MyUserForm(forms.Form):
-    username = forms.CharField(label = 'DNI', max_length = 9, error_messages = {'required' : 'Formato incorrecto'})
+    username = forms.CharField(label = 'DNI', max_length = 9, error_messages = {'required' : 'DNI no válido'})
     first_name = forms.CharField(label = 'Nombre', max_length = largeText)
     last_name = forms.CharField(label = 'Apellidos', max_length = largeText)
     email = forms.CharField(label = 'Correo', max_length = largeText, error_messages = {'required' : 'Formato incorrecto'})
