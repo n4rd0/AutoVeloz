@@ -151,8 +151,11 @@ Coches(oficina=of1, marca="Mercedes", modelo="GLC 43", gama=TiposDeGamas.ALTA, e
 
 c1 = Coches(oficina=of2, marca="Seat", modelo="Ibiza", gama=TiposDeGamas.BAJA, estado=TiposDeEstados.LIBRE)
 c2 = Coches(oficina=of2, marca="BMW", modelo="X5", gama=TiposDeGamas.ALTA, estado=TiposDeEstados.LIBRE)
+c3 = Coches(oficina=of1, marca="FIAT", modelo="Multipla", gama=TiposDeGamas.ALTA, estado=TiposDeEstados.LIBRE)
+
 c1.save()
 c2.save()
+c3.save()
 
 
 #/////////////////OPCIONES/////////////////
