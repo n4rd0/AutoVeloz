@@ -1,0 +1,14 @@
+{% include 'home/navbar.html'%}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Temporadas</title>
+</head>
+<body>
+	<h2><a href= {% url 'tarifas:tarifas_disponibles' id_coche 1%}>Enero-Mayo</a></h2>
+	<h2><a href= {% url 'tarifas:tarifas_disponibles' id_coche 2%}>Junio-Septiembre</a></h2>
+	<h2><a href= {% url 'tarifas:tarifas_disponibles' id_coche 3%}>Octubre-Noviembre</a></h2>
+</body>
+</html>
