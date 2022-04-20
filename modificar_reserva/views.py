@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from modificar_reserva.models import Reserva
 from recogida_entrega.forms import crearReserva
 
@@ -11,13 +11,11 @@ def ver_reservas(request):
 
 def modificar_reserva(request, id_reserva):
     reserva = Reserva.objects.get(id = id_reserva)
-    print(reserva)
-    form = crearReserva(instance = reserva, initial = {'fecha_rec' : reserva.fecha_rec})
-    print(form)
-    print(form.fields)
 
     if request.method == 'GET':
+        form = crearReserva(instance = reserva)
         return render(request, 'home/modificar_reserva.html', {'form' : form})
-
-    print(form.fields)
-    return HttpResponse('jajaxd')
+    else:
+        form = crearReserva(request.POST, instance = reserva)
+        form.save()
+        return HttpResponseRedirect('/reservas/')
