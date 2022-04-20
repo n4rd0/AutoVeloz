@@ -118,11 +118,11 @@ t39 = Tarifas.objects.create(tipo=TiposDeTarifas.LARGA_DURACION, gama=TiposDeGam
 Oficina.objects.all().delete()
 
 #Generar dato sin facturado
-of1 = Oficina(ciudad="Nombre ciudad")
+of1 = Oficina(ciudad="Madrid")
 of1.save()
 
 #Generar dato con facturado dado
-of2 = Oficina(ciudad="Nombre ciudad", facturado=262.1)
+of2 = Oficina(ciudad="Barcelona", facturado=262.1)
 of2.save()
 
 #/////////////////DESCUENTOS/////////////////
