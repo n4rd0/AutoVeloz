@@ -1,28 +1,64 @@
 {% include 'home/navbar.html'%}
 
-<!DOCTYPE html>
-<html>
 <head>
 	<meta charset="utf-8">
 	<title>Coches</title>
+	<style>
+
+		.recuadro{
+			margin-top: 2%;
+			margin-bottom: 2%;
+			border-style: solid;
+			border-width: 2px;
+			width: 50%;
+			background-image: "fotos_temp/coche1.png";
+		}
+		.column{
+			float: left;
+			width: 33%;
+		}
+		.row.after{
+			content: "";
+			display: table;
+			clear: both;
+		}
+
+	</style>
 </head>
 <body>
 	<h1>Lista de coches</h1>
+	<hr>
 	<div class="Coches">
-		{% for coche in coches %}
-			<div class="coche">
-				<!-- donde pone 1 habria que mandar la temporada (1, 2 o 3), esto es un ejemplo solo
-				habria que pedir fecha y poner este link donde sea necesario-->
-				<h2><a href= {% url 'tarifas:temporadas' coche.id%}>{{coche.marca}} {{coche.modelo}}</a></h2>
+	{% for coche in coches %}
+		<div class="row">
+			<div class="column">
+				<div class="coche">
+					<!-- donde pone 1 habria que mandar la temporada (1, 2 o 3), esto es un ejemplo solo
+					habria que pedir fecha y poner este link donde sea necesario-->
+					<a href= {% url 'tarifas:temporadas' coche.id %}>
+						{% if coche.modelo == "GLC 43" %}
+						<img src="https://seetech-corp.com/wp-content/uploads/2016/10/Car-PNG-File.png" alt= "imagen coche" width="400" height="270">
+						{% endif %}
+						{% if coche.modelo == "X5" %}
+						<img src="https://www.pngmart.com/files/3/BMW-X5-PNG-File.png" alt= "imagen coche" width="400" height="270">
+						{% endif %}
+						{% if coche.modelo == "Ibiza" %}
+						<img src="https://lamangarentacar.com/sites/default/files/styles/large/public/field/image/SEAT%20IBIZA.png" alt= "imagen coche" width="480" height="270">
+						{% endif %}
+					</a>
+				</div>
 
-				<p>{{coche.gama}}</p>
-				<p>{{coche.id_oficina}}</p>
-				<p>{{coche.estado}}</p>
+				<div class = "recuadro">
+					<p>Marca: {{coche.marca}}</p>
+					<p>Modelo: {{coche.modelo}}</p>
+					<p>Gama: {{coche.gama}}</p>
+					<p>Sucursal Encargada: {{coche.id_oficina}}</p>
+					<p>Estado del Coche: {{coche.estado}}</p>
 
+				</div>
 			</div>
-
-
-		{% endfor %}
+		</div>
 	</div>
+	{% endfor %}
 </body>
-</html>
+

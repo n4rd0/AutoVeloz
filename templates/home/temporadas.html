@@ -5,10 +5,43 @@
 <head>
 	<meta charset="utf-8">
 	<title>Temporadas</title>
+	<style>
+		.column{
+			float: left;
+			width: 33%;
+		}
+		.row.after{
+			content: "";
+			display: table;
+			clear: both;
+		}
+
+		div{text-align: center;}
+		h3{font-style: italic;
+		font-weight: 200;}
+
+		button{font-size: large;margin-top:100px;}
+
+	</style>
+
 </head>
 <body>
-	<h2><a href= {% url 'tarifas:tarifas_disponibles' id_coche 1%}>Enero-Mayo</a></h2>
-	<h2><a href= {% url 'tarifas:tarifas_disponibles' id_coche 2%}>Junio-Septiembre</a></h2>
-	<h2><a href= {% url 'tarifas:tarifas_disponibles' id_coche 3%}>Octubre-Noviembre</a></h2>
+<h1>Seleccion de Temporadas</h1>
+<h3>Seleccione por favor la temporada en la que desea realizar la reserva.</h3>
+
+<hr>
+
+
+	<div class="row">
+		<div class="column">
+			<button><a href= {% url 'tarifas:tarifas_disponibles' id_coche 1%}>Enero-Mayo</a></button>
+		</div>
+		<div class="column">
+			<button><a href= {% url 'tarifas:tarifas_disponibles' id_coche 2%}>Junio-Septiembre</a></button>
+		</div>
+		<div class="column">
+			<button><a href= {% url 'tarifas:tarifas_disponibles' id_coche 3%}>Octubre-Noviembre</a></button>
+		</div>
+	</div>
 </body>
 </html>
