@@ -172,8 +172,18 @@ opc1.save()
 Reserva.objects.all().delete()
 
 #Generar dato
-r1 = Reserva(usuario=user, oficina_rec=of1, oficina_dev=of1, coche=c1, tarifa=t1, fecha_rec='2020-05-01', fecha_dev='2020-05-26', hora_rec='15:00:00', hora_dev='9:30:00', tarjeta_credito=1234567890123456)
-r1.save()
+r1 = Reserva(
+    usuario=user, 
+    oficina_rec=of1, 
+    oficina_dev=of1, 
+    coche=c1, 
+    tarifa=t1, 
+    fecha_rec='2020-05-01', 
+    fecha_dev='2020-05-26', 
+    hora_rec='15:00:00', 
+    hora_dev='9:30:00', 
+    tarjeta_credito=1234567890123456
+).save()
 
 #Añadir extra
 r1.extra.add(ex1)
