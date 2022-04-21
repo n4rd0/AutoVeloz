@@ -15,7 +15,14 @@ body{background-color: rgb(189, 191, 192);}
 	<hr>
 	
 	{% for reserva in reservas %}
-	{{reserva}} <br>
+	<div>
+		<p>Oficina de Recogida: {{reserva.oficina_rec}}</p> 
+		<p>Oficina de Devolución: {{reserva.oficina_dev}}</p> 
+		<p>Coche Reservado: {{reserva.coche}}</p> 
+		<p>Tarifa de la Reserva: {{reserva.tarifa}}</p>  
+		<p>Fecha de Recogida: {{reserva.fecha_rec}} {{reserva.hora_rec}}</p> 
+		<p>Fecha de Devolución: {{reserva.fecha_dev}} {{reserva.hora_dev}}</p>
+	</div>
 	<a href= {% url 'reservas:modificar_reserva' reserva.id %}><button> Modificar Reserva</button></a>
 	<a href= {% url 'reservas_:eliminar_reserva' reserva.id %}><button> Eliminar Reserva</button></a>
 
