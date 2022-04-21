@@ -17,8 +17,8 @@ def tarifas_disponibles(request, id_coche, temporada):
     # descuento al usuario tipo negocio del 30% salvo tarifa fin de semana
     if tipo_usuario == 'Negocio':
         for tarifa in tarifas:
-            if tarifa['tipo'] != TiposDeTarifas.FIN_SEMANA:
-                tarifa['precio'] *= 0.7
+            if tarifa.tipo != TiposDeTarifas.FIN_SEMANA:
+                tarifa.precio = round(tarifa.precio * 0.7, 2)
 
     return render(request, 'home/tarifas.html', {'tarifas' : tarifas, 'id_coche' : id_coche})
 
