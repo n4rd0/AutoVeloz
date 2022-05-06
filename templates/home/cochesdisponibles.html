@@ -34,13 +34,13 @@
                         </div>
                         <div class="down-content">
                             <span> desde 300€</span>
-                            <h4> {{coche.marca}} {{coche.modelo}} </h4>
+                            <h4> {{coche}} </h4>
                             <p>
                                 <i class="fa fa-info" title="Gama"></i> {{coche.gama}} &nbsp;&nbsp;&nbsp;
                                 <i class="fa fa-institution" title="Oficina"></i> {{coche.oficina}}
                             </p>
                             <ul class="social-icons">
-                                <li><a href="#">+ Reservar</a></li>
+                                <li><a href={% url 'tarifas:temporadas' coche.id %}>+ Reservar</a></li>
                             </ul>
                         </div>
                     </div>

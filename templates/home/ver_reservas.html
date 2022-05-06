@@ -30,10 +30,10 @@
                 <div class="col-lg-4 col-md-4">
                     <div class="trainer-item">
                         <div class="image-thumb">
-                            <img src="{% static 'assets/images/product-1-720x480.jpg' %}" alt="">
+                            <img src={{reserva.coche.url}} alt="">
                         </div>
                         <div class="down-content">
-                            <span>coste de {{reserva.tarifa}}€</span>
+                            <span>{{reserva.tarifa}}€</span>
                             <h4>{{reserva.coche}}</h4>
                             <p>
                             	<i class="fa fa-arrow-right" title="Oficina recogida"></i> {{reserva.oficina_rec}} &nbsp;&nbsp;&nbsp;
@@ -46,9 +46,9 @@
                                 <i class="fa fa-clock-o" title="Hora devolución"></i> {{reserva.hora_dev}}
                             </p>
                             <ul class="social-icons">
-                                <li><a href="#">Modificar reserva</a></li>
+                                <li><a href={% url 'reservas:modificar_reserva' reserva.id %}>Modificar reserva</a></li>
                                 <li>|</li>
-                                <li><a href="#">Eliminar reserva</a></li>
+                                <li><a href={% url 'reservas_:eliminar_reserva' reserva.id %}>Eliminar reserva</a></li>
                             </ul>
                         </div>
                     </div>
