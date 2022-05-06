@@ -1,6 +1,8 @@
 {% extends "home/navbar.html" %}
 {% load static %}
 
+    {% block title %}Lista de vehículos | Auto veloz{% endblock %}
+
     {% block content %}
     <!-- ***** Call to Action Start ***** -->
     <section class="section section-bg" id="call-to-action" style="background-image: url({% static 'assets/images/banner-image-1-1920x500.jpg' %})">
@@ -10,8 +12,8 @@
                     <div class="cta-content">
                         <br>
                         <br>
-                        <h2>Our <em>Fleet</em></h2>
-                        <p>Ut consectetur, metus sit amet aliquet placerat, enim est ultricies ligula</p>
+                        <h2>Lista de <em>vehículos</em></h2>
+                        <p>Ofrecemos una amplia gama de coches disponibles para su actividad empresarial o particular.</p>
                     </div>
                 </div>
             </div>
@@ -46,6 +48,7 @@
                     </div>
                 </div>
             {% endfor %}
+            </div>
 
             <br>
             
