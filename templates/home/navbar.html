@@ -1,19 +1,34 @@
-<style>
-    img{ 
-        margin-right: 20px;
-    }
-    head{
-        background-color: rgb(189, 191, 192);
-    }
-</style>
+{% extends "home/base.html" %}
 
-<head>
-	<a href="/welcome/"><img src="https://uxwing.com/wp-content/themes/uxwing/download/07-web-app-development/home-button.png" 
 
-    alt= "home" width="40" height="40"></a>
+{% block body %}
+<header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <!-- ***** Logo Start ***** -->
+                    <a href="/home/" class="logo">Auto<em> Veloz</em></a>
+                    <!-- ***** Logo End ***** -->
+                    <!-- ***** Menu Start ***** -->
+                    <!-- TO DO: Cambiar html de Reservas -->
+                    <ul class="nav">
+                        <li><a href="/home/">Inicio</a></li>
+                        <li><a href="/coches_disponibles/">Coches disponibles</a></li>
+                        <li><a href="/reservas/">Reservas</a></li>
+                        <li><a href="{% url 'account:login' %}">Iniciar sesión</a></li> 
+                        <li><a href="{% url 'account:register' %}">Registro</a></li> 
+                    </ul>        
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+                    <!-- ***** Menu End ***** -->
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+{% block content %}
+{% endblock %}
 
-	<a href= {% url 'account:logout' %}> <img src="https://icons.veryicon.com/png/o/business/onezone-business-geographic-services-icon-v10/quit-icon.png" 
-        alt= "home" width="40" height="40"></a>
-</head>
-<hr>
-
+{% endblock %}

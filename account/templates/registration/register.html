@@ -1,14 +1,24 @@
-<!-- templates/registration/register.html -->
+{% extends "home/navbar.html" %}
+{% load static %}
 
-<style>
-	button{font-size: large;margin-top:20px; margin-bottom: 20px;}
-	body{background-color: rgb(189, 191, 192);}
-</style>
-<body>
-<h2>Registro</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Registrarse</button>
-</form>
-</body>
+    {% block content %}
+    <section class="section section-bg" id="call-to-action" style="background-image: url({% static 'assets/images/banner-image-1-1920x500.jpg' %})">
+        <section class="section" id="trainers" style="margin-top:10%">
+            <div class="wrapper"> 
+                <div class="container">
+                    <div class="row">
+                        <div class="trainer-item" style="margin-left:auto;margin-right:auto">
+                            <h2>Registro</h2>
+                            <br>
+                            <form method="post">
+                              {% csrf_token %}
+                              {{ form.as_p }}
+                            <button type="submit">Registrarse</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+    {% endblock %}
