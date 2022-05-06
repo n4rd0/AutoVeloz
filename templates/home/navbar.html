@@ -11,13 +11,16 @@
                     <a href="/home/" class="logo">Auto<em> Veloz</em></a>
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
-                    <!-- TO DO: Cambiar html de Reservas -->
                     <ul class="nav">
                         <li><a href="/home/">Inicio</a></li>
                         <li><a href="/coches_disponibles/">Coches disponibles</a></li>
                         <li><a href="/reservas/">Reservas</a></li>
-                        <li><a href="{% url 'account:login' %}">Iniciar sesión</a></li> 
-                        <li><a href="{% url 'account:register' %}">Registro</a></li> 
+                        {% if user.is_authenticated %}
+                            <li><a href="{% url 'account:logout' %}">Cerrar sesión</a></li>
+                        {% else %}
+                            <li><a href="{% url 'account:login' %}">Iniciar sesión</a></li> 
+                            <li><a href="{% url 'account:register' %}">Registro</a></li> 
+                        {% endif %}
                     </ul>        
                     <a class='menu-trigger'>
                         <span>Menu</span>
