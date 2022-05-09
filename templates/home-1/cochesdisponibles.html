@@ -41,7 +41,7 @@
 				<div class="coche">
 					<!-- donde pone 1 habria que mandar la temporada (1, 2 o 3), esto es un ejemplo solo
 					habria que pedir fecha y poner este link donde sea necesario-->
-					<a href= {% url 'tarifas:temporadas' coche.id %}>
+					<a href= {% url 'tarifas:tarifas_disponibles' coche.id %}>
 						{% if coche.modelo == "GLC 43" %}
 						<img src="https://seetech-corp.com/wp-content/uploads/2016/10/Car-PNG-File.png" alt= "imagen coche" width="400" height="270">
 						{% endif %}
