@@ -23,6 +23,8 @@ class Coches(models.Model):
      modelo = models.CharField(max_length = largeText)
      gama = models.CharField(max_length = smallText, choices = TiposDeGamas.choices)
      estado = models.CharField(max_length = smallText, choices = TiposDeEstados.choices)
+     url = models.CharField(max_length = largeText, default="")
+
      def __str__(self):
         return self.marca + ' ' + self.modelo
      

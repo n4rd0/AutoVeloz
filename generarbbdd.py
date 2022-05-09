@@ -124,11 +124,11 @@ ex1.save()
 Coches.objects.all().delete()
 
 #Generar dato
-Coches(oficina=of1, marca="Mercedes", modelo="GLC 43", gama=TiposDeGamas.ALTA, estado=TiposDeEstados.LIBRE).save()
+Coches(oficina=of1, marca="Mercedes", modelo="GLC 43", gama=TiposDeGamas.ALTA, estado=TiposDeEstados.LIBRE, url = "https://seetech-corp.com/wp-content/uploads/2016/10/Car-PNG-File.png").save()
 
-c1 = Coches(oficina=of2, marca="Seat", modelo="Ibiza", gama=TiposDeGamas.BAJA, estado=TiposDeEstados.LIBRE)
-c2 = Coches(oficina=of2, marca="BMW", modelo="X5", gama=TiposDeGamas.ALTA, estado=TiposDeEstados.LIBRE)
-c3 = Coches(oficina=of1, marca="FIAT", modelo="Multipla", gama=TiposDeGamas.ALTA, estado=TiposDeEstados.LIBRE)
+c1 = Coches(oficina=of2, marca="Seat", modelo="Ibiza", gama=TiposDeGamas.BAJA, estado=TiposDeEstados.LIBRE, url = "https://www.alquiber.es/wp-content/uploads/2020/11/seat-ibiza.png")
+c2 = Coches(oficina=of2, marca="BMW", modelo="X5", gama=TiposDeGamas.ALTA, estado=TiposDeEstados.LIBRE, url = "https://cdn.wheel-size.com/automobile/body/bmw-x5-m-2020-2021-1586281570.61.png")
+c3 = Coches(oficina=of1, marca="FIAT", modelo="Multipla", gama=TiposDeGamas.ALTA, estado=TiposDeEstados.LIBRE, url = "https://ik.imagekit.io/2ero5nzbxo2/FILES/generations/QF4sm55jOryvQbeC2NN9SXiczkDKfjlLZBmj8Ywm.png?ik-sdk-version=php-2.0.0")
 
 c1.save()
 c2.save()
