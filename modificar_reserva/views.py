@@ -46,8 +46,4 @@ def penalizacion_reserva(fecha_rec,tipo_usuario):
         if fecha_rec-datetime.date.today() <= datetime.timedelta(days=1):
             return 50
 
-
-
-
-
-
+    return 0
