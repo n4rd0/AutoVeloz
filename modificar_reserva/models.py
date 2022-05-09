@@ -6,8 +6,9 @@ from tarifas_disponibles.models import Tarifas
 
 class Extras(models.Model):
      extra = models.CharField(max_length = 128)
+     precio = models.DecimalField(max_digits=5, decimal_places=2)
      def __str__(self):
-        return self.extra
+        return self.extra + " " + str(precio)
 
 class Reserva(models.Model):
      usuario = models.ForeignKey(
@@ -45,5 +46,6 @@ class Reserva(models.Model):
 
 class Descuentos(models.Model):
      porcentaje = models.DecimalField(max_digits=3, decimal_places=2)
+     codigo = models.CharField(max_length = 5, default = '')
      def __str__(self):
-        return self.porcentaje
+        return str(self.porcentaje) + " " + self.codigo
