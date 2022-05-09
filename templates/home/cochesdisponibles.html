@@ -1,71 +1,84 @@
-{% include 'home/navbar.html'%}
+{% extends "home/navbar.html" %}
+{% load static %}
 
-<head style="background-color: rgb(189, 191, 192); font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;">
-	<meta charset="utf-8">
-	<title>Coches</title>
-	<style>
+    {% block title %}Lista de vehículos | Auto veloz{% endblock %}
 
-		.recuadro{
-			margin-top: 2%;
-			margin-bottom: 2%;
-			border-style: solid;
-			border-width: 2px;
-			width: 60%;
-			background-image: "fotos_temp/coche1.png";
-		}
-		.column{
-			float: left;
-			width: 33%;
-		}
-		.row.after{
-			content: "";
-			display: table;
-			clear: both;
-		}
+    {% block content %}
+    <!-- ***** Call to Action Start ***** -->
+    <section class="section section-bg" id="call-to-action" style="background-image: url({% static 'assets/images/banner-image-1-1920x500.jpg' %})">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <div class="cta-content">
+                        <br>
+                        <br>
+                        <h2>Lista de <em>vehículos</em></h2>
+                        <p>Ofrecemos una amplia gama de coches disponibles para su actividad empresarial o particular.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Call to Action End ***** -->
 
-		h3{
-			font-style: italic;
-		font-weight: 200;
-		}
 
-	</style>
-</head>
-<body style="background-color: rgb(189, 191, 192);">
-	<h1>Lista de coches</h1>
-	<h3>Lista de coches disponibles.</h3>
-	<hr>
-	<div class="Coches">
-	{% for coche in coches %}
-		<div class="row">
-			<div class="column">
-				<div class="coche">
-					<!-- donde pone 1 habria que mandar la temporada (1, 2 o 3), esto es un ejemplo solo
-					habria que pedir fecha y poner este link donde sea necesario-->
-					<a href= {% url 'tarifas:tarifas_disponibles' coche.id %}>
-						{% if coche.modelo == "GLC 43" %}
-						<img src="https://seetech-corp.com/wp-content/uploads/2016/10/Car-PNG-File.png" alt= "imagen coche" width="400" height="270">
-						{% endif %}
-						{% if coche.modelo == "X5" %}
-						<img src="https://cdn.wheel-size.com/automobile/body/bmw-x5-m-2020-2021-1586281570.61.png" alt= "imagen coche" width="430" height="270">
-						{% endif %}
-						{% if coche.modelo == "Ibiza" %}
-						<img src="https://www.alquiber.es/wp-content/uploads/2020/11/seat-ibiza.png" alt= "imagen coche" width="430" height="270">
-						{% endif %}
-						{% if coche.modelo == "Multipla" %}
-						<img src="https://ik.imagekit.io/2ero5nzbxo2/FILES/generations/QF4sm55jOryvQbeC2NN9SXiczkDKfjlLZBmj8Ywm.png?ik-sdk-version=php-2.0.0" alt= "imagen coche" width="400" height="270">
-						{% endif %}
-					</a>
-				</div>
+   <!-- ***** Fleet Starts ***** -->
+    <section class="section" id="trainers">
+        <div class="container">
+            <br>
+            <br>
+            <div class="row">
+            {% for coche in coches %}
+                <div class="col-lg-4 col-md-4">
+                    <div class="trainer-item">
+                        <div class="image-thumb">
+                            <img src={{coche.url}} alt="">
+                        </div>
+                        <div class="down-content">
+                            <span> desde 300€</span>
+                            <h4> {{coche}} </h4>
+                            <p>
+                                <i class="fa fa-info" title="Gama"></i> {{coche.gama}} &nbsp;&nbsp;&nbsp;
+                                <i class="fa fa-institution" title="Oficina"></i> {{coche.oficina}}
+                            </p>
+                            <ul class="social-icons">
+                                <li><a href={% url 'tarifas:temporadas' coche.id %}>+ Reservar</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
 
-				<div class = "recuadro">
-					<p>Marca: {{coche.marca}}</p>
-					<p>Modelo: {{coche.modelo}}</p>
-					<p>Gama: {{coche.gama}}</p>
-					<p>Sucursal Encargada: {{coche.oficina}}</p>
-				</div>
-			</div>
-		</div>
-	</div>
-	{% endfor %}
-</body>
+            <br>
+            
+            {% if coches.has_other_pages %}
+            <nav>
+              <ul class="pagination pagination-lg justify-content-center">
+                {% if coches.has_previous %}
+                <li class="page-item">
+                  <a class="page-link" href="?page={{ coches.previous_page_number }}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                </li>
+                {% endif %}
+                {% for i in coches.paginator.page_range %}
+                  <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                {% endfor %}
+                {% if coches.has_next %}
+                <li class="page-item">
+                  <a class="page-link" href="?page={{ coches.next_page_number }}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </li>
+                {% endif %}
+              </ul>
+            </nav>
+            {% endif %}
 
+        </div>
+    </section>
+    <!-- ***** Fleet Ends ***** -->
+    {% endblock %}
