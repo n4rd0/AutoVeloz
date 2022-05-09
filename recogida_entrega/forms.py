@@ -44,3 +44,18 @@ class crearReserva(forms.ModelForm):
                 'required': 'La tarjeta debe tener 16 dígitos',
             },
         }
+
+class Pago(forms.Form):
+    tarjeta_credito = forms.CharField(
+            label = 'Tarjeta de crédito', 
+            max_length = 16, 
+            error_messages = {'required': 'La tarjeta debe tener 16 dígitos'},
+        )
+    fecha_caducidad = forms.DateField(widget = DateInput())
+    titular = forms.CharField(max_length = 30)
+    cvv = forms.CharField(
+            label = 'CVV',
+            max_length = 3,
+            error_messages = {'required' : 'CVV debe tener 3 dígitos'},
+        )
+

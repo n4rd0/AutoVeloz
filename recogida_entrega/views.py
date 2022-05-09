@@ -58,3 +58,32 @@ def recogida_entrega(request, id_coche, id_tarifa):
         else:
             form = forms.crearReserva()
             return render(request, 'home/recogida.html', {'form' : form})
+
+def pago(request, id_reserva):
+    if request.method == 'GET':
+        form = forms.Pago()
+        return render(request, 'home/pago.html', {'form': form})
+    else:
+        post = request.POST
+        form = forms.Pago(post)
+        reserva = Reserva.objects.get(id = id_reserva)
+
+        if form.is_valid():
+            dat = form.cleaned_data
+            # ver mensajes de error personalizados en forms.py
+            if not re.match(r'^[0-9]{16}$', post['tarjeta_credito']):
+                dat['tarjeta_credito'] = ''
+                form = forms.Pago(dat)
+                return render(request, 'home/pago.html', {'form' : form})
+            elif not re.match(r'^[0-9]{3}$', post['cvv']):
+                dat['cvv'] = ''
+                form = forms.Pago(dat)
+                return render(request, 'home/pago.html', {'form' : form})
+            else:
+                oficina = reserva.oficina_rec
+                oficina.facturado += reserva.precio
+                oficina.save()
+                return HttpResponseRedirect('/reservas/')
+        else:
+            form = forms.Pago()
+            return render(request, 'home/pago.html', {'form' : form})
