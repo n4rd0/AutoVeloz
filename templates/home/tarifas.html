@@ -32,7 +32,7 @@
 		{% for tarifa in tarifas %}
 		<div class="row">
 			<div class="column">
-				<a href= {% url 'recogida_entrega:reserva' id_coche tarifa.id%}> <button>{{tarifa.tipo}} con precio {{tarifa.precio}} €</button></a>
+				<a href= {% url 'recogida_entrega:reserva' id_coche tarifa.id%}> <button>{{tarifa.tipo}}</button></a>
 			</div>
 		</div>
 		{% endfor %}

@@ -37,7 +37,7 @@ class crearReserva(forms.ModelForm):
         }
         error_messages = {
             'fecha_rec': {
-                'required': 'El mes de recogida debe ser de la temporada elegida',
+                'required': 'Elija un fin de semana',
                 'invalid': 'Las fechas deben ser consistentes',
             },
             'tarjeta_credito': {

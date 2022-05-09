@@ -32,6 +32,7 @@ class Reserva(models.Model):
           Tarifas,
           on_delete = models.CASCADE
      )
+     precio = models.FloatField()
      extra = models.ManyToManyField(Extras)
      opciones = models.ManyToManyField(Opciones)
      fecha_rec = models.DateField()

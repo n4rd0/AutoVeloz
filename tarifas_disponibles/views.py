@@ -9,10 +9,10 @@ from account.models import Usuario
 # Create your views here.
 
 #@csrf_exempt
-def tarifas_disponibles(request, id_coche, temporada):
+def tarifas_disponibles(request, id_coche):
     tipo_usuario = Usuario.objects.get(dni = request.user.username).user_type
     coche = Coches.objects.get(id = id_coche)
-    tarifas = Tarifas.objects.filter(gama = coche.gama, temporada = temporada)
+    tarifas = Tarifas.objects.filter(gama = coche.gama)
 
     # descuento al usuario tipo negocio del 30% salvo tarifa fin de semana
     if tipo_usuario == 'Negocio':
@@ -22,5 +22,3 @@ def tarifas_disponibles(request, id_coche, temporada):
 
     return render(request, 'home/tarifas.html', {'tarifas' : tarifas, 'id_coche' : id_coche})
 
-def temporadas(request, id_coche):
-    return render(request, 'home/temporadas.html', {'id_coche' : id_coche})
