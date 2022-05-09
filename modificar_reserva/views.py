@@ -4,6 +4,8 @@ from django.contrib.auth.decorators import login_required
 from modificar_reserva.models import Reserva
 from recogida_entrega.forms import crearReserva
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+import datetime
+from account.models import Usuario
 
 # Create your views here.
 
@@ -24,11 +26,26 @@ def ver_reservas(request):
 
 def modificar_reserva(request, id_reserva):
     reserva = Reserva.objects.get(id = id_reserva)
-
+    tipo_usuario = Usuario.objects.get(dni = request.user.username).user_type
     if request.method == 'GET':
         form = crearReserva(instance = reserva)
-        return render(request, 'home/modificar_reserva.html', {'form' : form})
+        penalizacion = penalizacion_reserva(reserva.fecha_rec,tipo_usuario)
+        return render(request, 'home-1/modificar_reserva.html', {'form' : form,'penalizacion' : penalizacion})
     else:
         form = crearReserva(request.POST, instance = reserva)
         form.save()
         return HttpResponseRedirect('/reservas/')
+
+def penalizacion_reserva(fecha_rec,tipo_usuario):
+    if tipo_usuario == 'Particular':
+        if fecha_rec-datetime.date.today() < datetime.timedelta(days=5):
+            return 25
+
+        elif fecha_rec-datetime.date.today() <= datetime.timedelta(days=1):
+            return 50
+
+    else:
+        if fecha_rec-datetime.date.today() <= datetime.timedelta(days=1):
+            return 50
+
+    return 0
