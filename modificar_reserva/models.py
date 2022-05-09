@@ -40,6 +40,7 @@ class Reserva(models.Model):
      hora_rec = models.TimeField()
      hora_dev = models.TimeField()
      tarjeta_credito = models.CharField(max_length=16)
+     precio = models.DecimalField(max_digits=19, decimal_places=2)
 
      def __str__(self):
         return f'Coche {self.coche}, Oficina recogida {self.oficina_rec}, Oficina devolución {self.oficina_dev}'

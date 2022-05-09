@@ -185,6 +185,7 @@ r1 = Reserva.objects.create(
     hora_rec= now.time(),
     hora_dev= (now + datetime.timedelta(hours = 6)),
     tarjeta_credito = 1234567890123456,
+    precio = 56.34,
 )
 
 #Añadir extra
