@@ -1,0 +1,21 @@
+{% include 'home/navbar.html'%}
+
+<style>
+
+button{font-size: large;margin-top:20px; margin-bottom: 20px;}
+h3{font-style: italic;
+		font-weight: 200;}
+body{background-color: rgb(189, 191, 192);}
+</style>
+
+
+	<h1>Reservas</h1>
+	<h3>Modifique los datos deseados.</h3>
+
+	<hr>
+	
+	<form method="post">
+	  {% csrf_token %}
+	  {{ form.as_p }}
+	  <button type="submit">Actualizar</button>
+	</form>
