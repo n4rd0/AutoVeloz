@@ -15,7 +15,6 @@ class TiposDeTarifas(models.TextChoices):
 class Tarifas(models.Model):
      tipo = models.CharField(max_length = 64, choices = TiposDeTarifas.choices, default = 'No Disponible')
      gama = models.CharField(max_length = 64, choices = TiposDeGamas.choices, default = 'No Disponible')
-     temporada = models.IntegerField()
      precio = models.FloatField()
      def __str__(self):
-        return 'Tipo ' + self.tipo + ' Gama ' + self.gama + ' Temporada ' + str(self.temporada) + ' Precio ' + str(self.precio)
+        return 'Tipo ' + self.tipo + ' Gama ' + self.gama + ' Precio ' + str(self.precio)
