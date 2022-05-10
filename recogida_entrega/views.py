@@ -79,7 +79,7 @@ def recogida_entrega(request, id_coche, id_tarifa):
                 elif tarifa.tipo=='Por día y por kilometraje' or tarifa.tipo=='Por día y kilometraje ilimitado':
                     precio=deadlines(rec, dev)*tarifa.precio
                 elif tarifa.tipo=='Por semana':
-                    precio=deadlines(rec, dev, 7)*tarifa.precio
+                    precio=max(get_temporada(dat['fecha_rec']),deadlines(rec, dev, 7))*tarifa.precio
 
                 reserva = Reserva.objects.create(
                         **dat, 
