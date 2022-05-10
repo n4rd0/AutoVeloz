@@ -19,7 +19,6 @@ class crearReserva(forms.ModelForm):
                 'hora_rec',
                 'fecha_dev',
                 'hora_dev',
-                'tarjeta_credito',
             ]
         widgets = {
             'fecha_rec' : DateInput(),#forms.DateInput(format=('%d-%m-%Y')),#DateInput(format = '%d/%m/%Y'),
@@ -33,15 +32,11 @@ class crearReserva(forms.ModelForm):
                 'fecha_dev' : 'Fecha devolución',
                 'hora_rec' : 'Hora recogida',
                 'hora_dev' : 'Hora devolución',
-                'tarjeta_credito' : 'Tarjeta de crédito',
         }
         error_messages = {
             'fecha_rec': {
                 'required': 'Elija un fin de semana',
                 'invalid': 'Las fechas deben ser consistentes',
-            },
-            'tarjeta_credito': {
-                'required': 'La tarjeta debe tener 16 dígitos',
             },
         }
 
@@ -51,7 +46,11 @@ class Pago(forms.Form):
             max_length = 16, 
             error_messages = {'required': 'La tarjeta debe tener 16 dígitos'},
         )
-    fecha_caducidad = forms.DateField(widget = DateInput())
+    fecha_caducidad = forms.DateField(
+            label = 'Fecha de caducidad',
+            widget = DateInput(),
+            error_messages = {'required' : 'Tarjeta caducada'},
+        )
     titular = forms.CharField(max_length = 30)
     cvv = forms.CharField(
             label = 'CVV',
