@@ -39,12 +39,16 @@
                             <p>
                             	<i class="fa fa-arrow-right" title="Oficina recogida"></i> {{reserva.oficina_rec}} &nbsp;&nbsp;&nbsp;
                             	<i class="fa fa-calendar" title="Fecha recogida"></i> {{reserva.fecha_rec}} &nbsp;&nbsp;&nbsp;
+                              
                                 <i class="fa fa-clock-o" title="Hora recogida"></i> {{reserva.hora_rec}} &nbsp;&nbsp;&nbsp;
+                               
                             </p>
                             <p>
                                 <i class="fa fa-arrow-left" title="Oficina devolución"></i> {{reserva.oficina_dev}} &nbsp;&nbsp;&nbsp;
                             	<i class="fa fa-calendar" title="Fecha devolución"></i> {{reserva.fecha_dev}} &nbsp;&nbsp;&nbsp;
-                                <i class="fa fa-clock-o" title="Hora devolución"></i> {{reserva.hora_dev}}
+                            
+                                <i class="fa fa-clock-o" title="Hora devolución"></i> {{reserva.hora_dev}} &nbsp;&nbsp;&nbsp;
+                              
                             </p>
                             <ul class="social-icons">
                                 <li><a href={% url 'reservas:modificar_reserva' reserva.id %}>Modificar reserva</a></li>

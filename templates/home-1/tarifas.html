@@ -1,33 +1,57 @@
-{% include 'home/navbar.html'%}
+{% extends "home/navbar.html" %}
+{% load static %}
 
-<style>
-	.column{
-		float: left;
-		width: 25%;
-		text-align: center;
-	}
-	.row.after{
-		content: "";
-		display: table;
-		clear: both;
-	}
+    {% block title %} Tarifas Disponibles | Auto veloz{% endblock %}
 
-	h3{font-style: italic;
-	font-weight: 200;}
+    {% block content %}
+    <!-- ***** Call to Action Start ***** -->
+    <section class="section section-bg" id="call-to-action" style="background-image: url({% static 'assets/images/banner-image-1-1920x500.jpg' %})">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <div class="cta-content">
+                        <br>
+                        <br>
+                        <h2>Tarifas<em> Disponibles</em></h2>
+                        <p>Seleccione la tarifa deseada para su reserva.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** Call to Action End ***** -->
 
-	button{
-		font-size: 
-		large;margin-top:100px;
-	}
-	body{background-color: rgb(189, 191, 192);}
+
+   <!-- ***** Fleet Starts ***** -->
+    <section class="section" id="trainers">
+        <div class="container">
+            <br>
+            <br>
+            <div class="row">
+            {% for tarifa in tarifas %}
+                <div class="col-lg-4 col-md-4">
+                    <div class="trainer-item">
+                        <div class="image-thumb">
+                        </div>
+                        <div class="down-content">
+                            <h4> Precio de Tarifa {{tarifa.precio}} € </h4>
+                            <p>
+                                <i class="fa fa-info" title="Gama"></i> {{tarifa.tipo}} &nbsp;&nbsp;&nbsp;
+								<li><a href= {% url 'recogida_entrega:reserva' id_coche tarifa.id%}> + Seleccionar</a></li>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+
+            <br>
+        </div>
+    </section>
+    <!-- ***** Fleet Ends ***** -->
+    {% endblock %}
 
 
-</style>
-<body>
-<h1>Lista de Tarifas Disponibles</h1>
-<h3>Seleccione la tarifa deseada.</h3>
-<hr>	
-		{% for extra in extras %}
+<!---		{% for extra in extras %}
 		<h1>{{extra.precio}}</h1>
 
 		{% endfor %}
@@ -38,9 +62,4 @@
 				<a href= {% url 'recogida_entrega:reserva' id_coche tarifa.id%}> <button>{{tarifa.tipo}}</button></a>
 			</div>
 		</div>
-		{% endfor %}
-
-</body>
-	
-
-
+		{% endfor %}->

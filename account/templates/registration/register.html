@@ -23,6 +23,8 @@
       background-color: #f9735b;
       color: #fff;
     }
+
+
     </style>
     
     <section class="section section-bg" id="call-to-action" style="background-image: url({% static 'assets/images/banner-image-1-1920x500.jpg' %})">
@@ -33,7 +35,7 @@
                         <div class="trainer-item" style="margin-left:auto;margin-right:auto">
                             <h2>Registro</h2>
                             <br>
-                            <form method="post">
+                            <form method="post" style="text-align:right">
                               {% csrf_token %}
                               {{ form.as_p }}
                             <button type="submit" id="form-submit" class="main-button">Registrarse</button>
