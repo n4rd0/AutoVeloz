@@ -6,7 +6,7 @@ from tarifas_disponibles.models import Tarifas
 
 class Extras(models.Model):
      extra = models.CharField(max_length = 128)
-     precio = models.DecimalField(max_digits=5, decimal_places=2)
+     precio = models.IntegerField()
      def __str__(self):
         return self.extra + " " + str(precio)
 

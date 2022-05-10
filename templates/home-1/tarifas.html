@@ -26,8 +26,11 @@
 <body>
 <h1>Lista de Tarifas Disponibles</h1>
 <h3>Seleccione la tarifa deseada.</h3>
-<hr>
+<hr>	
+		{% for extra in extras %}
+		<h1>{{extra.precio}}</h1>
 
+		{% endfor %}
 	
 		{% for tarifa in tarifas %}
 		<div class="row">
@@ -36,6 +39,7 @@
 			</div>
 		</div>
 		{% endfor %}
+
 </body>
 	
 

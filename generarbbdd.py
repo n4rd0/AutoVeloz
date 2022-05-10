@@ -115,8 +115,15 @@ Descuentos(porcentaje = 0.15, codigo = "AUTOV").save()
 Extras.objects.all().delete()
 
 #Generar dato
-ex1 = Extras(extra="Nombre del extra", precio=15.99)
+ex1 = Extras(extra="Wi-Fi",precio=55)
+ex2 = Extras(extra="GPS",precio=60)
+ex3 = Extras(extra="Silla",precio=150)
+ex4 = Extras(extra="Cadenas",precio=40)
+
 ex1.save()
+ex2.save()
+ex3.save()
+ex4.save()
 
 
 #/////////////////COCHES/////////////////
@@ -167,6 +174,10 @@ r1 = Reserva.objects.create(
 
 #Añadir extra
 r1.extra.add(ex1)
+r1.extra.add(ex2)
+r1.extra.add(ex3)
+r1.extra.add(ex4)
+
 
 #Repetir no añade duplicados
 r1.extra.add(ex1)
