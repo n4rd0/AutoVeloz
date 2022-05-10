@@ -11,7 +11,7 @@ from account.models import Usuario
 
 @login_required
 def ver_reservas(request):
-    reservas_list = Reserva.objects.filter(usuario__dni = request.user.username)
+    reservas_list = Reserva.objects.filter(usuario__dni = request.user.username, pagada = True)
     
     page = request.GET.get('page', 1)
     paginator = Paginator(reservas_list, 3)

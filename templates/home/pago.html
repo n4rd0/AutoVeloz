@@ -1,0 +1,8 @@
+<h1>Pago</h1>
+<hr>
+
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Pagar</button>
+</form>

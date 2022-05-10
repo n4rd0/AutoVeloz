@@ -6,8 +6,9 @@ from tarifas_disponibles.models import Tarifas
 
 class Extras(models.Model):
      extra = models.CharField(max_length = 128)
+     precio = models.DecimalField(max_digits=5, decimal_places=2)
      def __str__(self):
-        return self.extra
+        return self.extra + " " + str(precio)
 
 class Reserva(models.Model):
      usuario = models.ForeignKey(
@@ -32,7 +33,6 @@ class Reserva(models.Model):
           Tarifas,
           on_delete = models.CASCADE
      )
-     precio = models.FloatField()
      extra = models.ManyToManyField(Extras)
      opciones = models.ManyToManyField(Opciones)
      fecha_rec = models.DateField()
@@ -40,11 +40,14 @@ class Reserva(models.Model):
      hora_rec = models.TimeField()
      hora_dev = models.TimeField()
      tarjeta_credito = models.CharField(max_length=16)
+     precio = models.DecimalField(max_digits=19, decimal_places=2)
+     pagada = models.BooleanField(default = False)
 
      def __str__(self):
         return f'Coche {self.coche}, Oficina recogida {self.oficina_rec}, Oficina devolución {self.oficina_dev}'
 
 class Descuentos(models.Model):
      porcentaje = models.DecimalField(max_digits=3, decimal_places=2)
+     codigo = models.CharField(max_length = 5, default = '')
      def __str__(self):
-        return self.porcentaje
+        return str(self.porcentaje) + " " + self.codigo

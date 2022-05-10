@@ -59,11 +59,7 @@ def recogida_entrega(request, id_coche, id_tarifa):
             dev = datetime.datetime.combine(dat['fecha_dev'], dat['hora_dev'])
             delta=dev-rec
             # ver mensajes de error personalizados en forms.py
-            if not re.match(r'^[0-9]{16}$', post['tarjeta_credito']):
-                dat['tarjeta_credito'] = ''
-                form = forms.crearReserva(dat)
-                return render(request, 'home/recogida.html', {'form' : form})
-            
+
             if tarifa.tipo=='Por fin de semana' and (rec.weekday()<4 or dev.weekday()<4 or delta.days>3):
                 dat['fecha_rec'] = ''
                 form = forms.crearReserva(dat)
@@ -85,7 +81,7 @@ def recogida_entrega(request, id_coche, id_tarifa):
                 elif tarifa.tipo=='Por semana':
                     precio=deadlines(rec, dev, 7)*tarifa.precio
 
-                Reserva.objects.create(
+                reserva = Reserva.objects.create(
                         **dat, 
                         coche = coche,
                         oficina_rec = coche.oficina,
@@ -93,7 +89,42 @@ def recogida_entrega(request, id_coche, id_tarifa):
                         precio = precio,
                         usuario = Usuario.objects.get(dni = request.user.username),
                     )
-                return HttpResponseRedirect('/reservas/')
+                return HttpResponseRedirect(f'/recogida_entrega/pago/{reserva.id}')
         else:
             form = forms.crearReserva()
             return render(request, 'home/recogida.html', {'form' : form})
+
+def pago(request, id_reserva):
+    if request.method == 'GET':
+        form = forms.Pago()
+        return render(request, 'home/pago.html', {'form': form})
+    else:
+        post = request.POST
+        form = forms.Pago(post)
+        reserva = Reserva.objects.get(id = id_reserva)
+
+        if form.is_valid():
+            dat = form.cleaned_data
+            # ver mensajes de error personalizados en forms.py
+            if not re.match(r'^[0-9]{16}$', dat['tarjeta_credito']):
+                dat['tarjeta_credito'] = ''
+                form = forms.Pago(dat)
+                return render(request, 'home/pago.html', {'form' : form})
+            elif not re.match(r'^[0-9]{3}$', dat['cvv']):
+                dat['cvv'] = ''
+                form = forms.Pago(dat)
+                return render(request, 'home/pago.html', {'form' : form})
+            elif dat['fecha_caducidad'] < datetime.date.today():
+                dat['fecha_caducidad'] = ''
+                form = forms.Pago(dat)
+                return render(request, 'home/pago.html', {'form' : form})
+            else:
+                oficina = reserva.oficina_rec
+                oficina.facturado += reserva.precio
+                oficina.save()
+                reserva.pagada = True
+                reserva.save()
+                return HttpResponseRedirect('/reservas/')
+        else:
+            form = forms.Pago()
+            return render(request, 'home/pago.html', {'form' : form})

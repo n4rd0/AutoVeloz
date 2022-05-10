@@ -107,7 +107,7 @@ of2.save()
 Descuentos.objects.all().delete()
 
 #Generar dato
-Descuentos(porcentaje = 0.15).save()
+Descuentos(porcentaje = 0.15, codigo = "AUTOV").save()
 
 
 #/////////////////EXTRAS/////////////////
@@ -115,7 +115,7 @@ Descuentos(porcentaje = 0.15).save()
 Extras.objects.all().delete()
 
 #Generar dato
-ex1 = Extras(extra="Nombre del extra")
+ex1 = Extras(extra="Nombre del extra", precio=15.99)
 ex1.save()
 
 
@@ -162,6 +162,7 @@ r1 = Reserva.objects.create(
     hora_rec= now.time(),
     hora_dev= (now + datetime.timedelta(hours = 6)),
     tarjeta_credito = 1234567890123456,
+    pagada = True,
 )
 
 #Añadir extra
