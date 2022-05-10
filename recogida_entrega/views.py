@@ -122,6 +122,8 @@ def pago(request, id_reserva):
                 oficina = reserva.oficina_rec
                 oficina.facturado += reserva.precio
                 oficina.save()
+                reserva.pagada = True
+                reserva.save()
                 return HttpResponseRedirect('/reservas/')
         else:
             form = forms.Pago()
