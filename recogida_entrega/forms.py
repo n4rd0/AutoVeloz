@@ -33,28 +33,19 @@ class crearReserva(forms.ModelForm):
                 'hora_rec' : 'Hora recogida',
                 'hora_dev' : 'Hora devolución',
         }
-        error_messages = {
-            'fecha_rec': {
-                'required': 'Elija un fin de semana',
-                'invalid': 'Las fechas deben ser consistentes',
-            },
-        }
 
 class Pago(forms.Form):
     tarjeta_credito = forms.CharField(
             label = 'Tarjeta de crédito', 
             max_length = 16, 
-            error_messages = {'required': 'La tarjeta debe tener 16 dígitos'},
         )
 
     titular = forms.CharField(max_length = 30)
     cvv = forms.CharField(
             label = 'CVV',
             max_length = 3,
-            error_messages = {'required' : 'CVV debe tener 3 dígitos'},
         )
     fecha_caducidad = forms.DateField(
             label = 'Fecha de caducidad',
             widget = DateInput(),
-            error_messages = {'required' : 'Tarjeta caducada'},
         )

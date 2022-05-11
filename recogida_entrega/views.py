@@ -7,6 +7,7 @@ from coches_disponibles.models import Coches
 from modificar_reserva.models import Reserva
 import datetime
 import re
+from django.contrib import messages
 
 def get_temporada(fecha_rec):
     month = fecha_rec.month
@@ -68,6 +69,7 @@ def recogida_entrega(request, id_reserva):
             elif dev <= rec or rec <= datetime.datetime.now():
                 dat['fecha_rec'] = 'invalid'
                 form = forms.crearReserva(dat)
+                messages.error(request, "Seleccione fechas correctas")
                 return render(request, 'home/recogida.html', {'form' : form})
             else:
                 coche = res.coche
@@ -82,6 +84,7 @@ def recogida_entrega(request, id_reserva):
                 elif tarifa.tipo=='Por semana':
                     precio=max(get_temporada(dat['fecha_rec']),deadlines(rec, dev, 7))*tarifa.precio
 
+<<<<<<< HEAD
                 for ex in res.extra.all():
                     precio += ex.precio
 
@@ -92,6 +95,7 @@ def recogida_entrega(request, id_reserva):
                 res.hora_dev = dat['hora_dev']
                 res.precio = precio
                 res.save()
+                messages.success(request, "Reserva realizada correctamente")
                 return HttpResponseRedirect(f'/recogida_entrega/pago/{res.id}')
         else:
             form = forms.crearReserva()
@@ -112,15 +116,18 @@ def pago(request, id_reserva):
             if not re.match(r'^[0-9]{16}$', dat['tarjeta_credito']):
                 dat['tarjeta_credito'] = ''
                 form = forms.Pago(dat)
-                return render(request, 'home/pago.html', {'form' : form, 'precio': reserva.precio})
+                messages.error(request, "Tarjeta de crédito inválida")
+                return render(request, 'home/pago.html', {'form' : form})
             elif not re.match(r'^[0-9]{3}$', dat['cvv']):
                 dat['cvv'] = ''
                 form = forms.Pago(dat)
-                return render(request, 'home/pago.html', {'form' : form, 'precio': reserva.precio})
+                messages.error(request, "CVV inválido")
+                return render(request, 'home/pago.html', {'form' : form})
             elif dat['fecha_caducidad'] < datetime.date.today():
                 dat['fecha_caducidad'] = ''
                 form = forms.Pago(dat)
-                return render(request, 'home/pago.html', {'form' : form, 'precio': reserva.precio})
+                messages.error(request, "Fecha de caducidad inválida")
+                return render(request, 'home/pago.html', {'form' : form})
             else:
                 oficina = reserva.oficina_rec
                 oficina.facturado += reserva.precio

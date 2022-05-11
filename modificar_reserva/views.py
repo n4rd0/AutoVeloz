@@ -1,3 +1,4 @@
+import django
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
@@ -6,6 +7,7 @@ from recogida_entrega.forms import crearReserva
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import datetime
 from account.models import Usuario
+from django.contrib import messages
 
 # Create your views here.
 
