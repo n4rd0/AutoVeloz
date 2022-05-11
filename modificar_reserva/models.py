@@ -4,8 +4,14 @@ from recogida_entrega.models import Oficina
 from coches_disponibles.models import Coches, Opciones
 from tarifas_disponibles.models import Tarifas
 
+class TiposDeExtras(models.TextChoices):
+     WIFI = 'Wi-Fi'
+     GPS = 'GPS'
+     SILLA = 'Silla para niños'
+     CADENAS = 'Cadenas de nieve'
+
 class Extras(models.Model):
-     extra = models.CharField(max_length = 128)
+     extra = models.CharField(max_length = 256, choices = TiposDeExtras.choices)
      precio = models.IntegerField()
      def __str__(self):
         return self.extra + " " + str(precio)
