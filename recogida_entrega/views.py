@@ -91,7 +91,7 @@ def recogida_entrega(request, id_coche, id_tarifa):
                         precio = precio,
                         usuario = Usuario.objects.get(dni = request.user.username),
                     )
-                messages.success(request, "Reserva Realizada Correctamente")
+                messages.success(request, "Reserva realizada correctamente")
                 return HttpResponseRedirect(f'/recogida_entrega/pago/{reserva.id}')
         else:
             form = forms.crearReserva()
@@ -122,7 +122,7 @@ def pago(request, id_reserva):
             elif dat['fecha_caducidad'] < datetime.date.today():
                 dat['fecha_caducidad'] = ''
                 form = forms.Pago(dat)
-                messages.error(request, "Fecha de caducidad Inválida")
+                messages.error(request, "Fecha de caducidad inválida")
                 return render(request, 'home/pago.html', {'form' : form})
             else:
                 oficina = reserva.oficina_rec
