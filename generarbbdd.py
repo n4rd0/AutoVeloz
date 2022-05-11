@@ -1,6 +1,6 @@
 from account.models import Usuario, TiposDeUsuarios
 from django.contrib.auth.models import User
-from modificar_reserva.models import Reserva, Extras, Descuentos
+from modificar_reserva.models import Reserva, Extras, Descuentos, TiposDeExtras
 from tarifas_disponibles.models import Tarifas, TiposDeTarifas
 from coches_disponibles.models import Coches, Opciones, TiposDeGamas, TiposDeEstados
 from recogida_entrega.models import Oficina
@@ -115,10 +115,10 @@ Descuentos(porcentaje = 0.15, codigo = "AUTOV").save()
 Extras.objects.all().delete()
 
 #Generar dato
-ex1 = Extras(extra="Wi-Fi",precio=55)
-ex2 = Extras(extra="GPS",precio=60)
-ex3 = Extras(extra="Silla",precio=150)
-ex4 = Extras(extra="Cadenas",precio=40)
+ex1 = Extras(extra=TiposDeExtras.WIFI,precio=55)
+ex2 = Extras(extra=TiposDeExtras.GPS,precio=60)
+ex3 = Extras(extra=TiposDeExtras.SILLA,precio=150)
+ex4 = Extras(extra=TiposDeExtras.CADENAS,precio=40)
 
 ex1.save()
 ex2.save()

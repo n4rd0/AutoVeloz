@@ -44,14 +44,15 @@ def deadlines(fecha, fecha_dev, semanas = 1):
 
 # Create your views here.
 
-def recogida_entrega(request, id_coche, id_tarifa):
+def recogida_entrega(request, id_reserva):
     if request.method == 'GET':
         form = forms.crearReserva()
         return render(request, 'home/recogida.html', {'form': form})
     else:
         post = request.POST
         form = forms.crearReserva(post)
-        tarifa = Tarifas.objects.get(id = id_tarifa)
+        res = Reserva.objects.get(id = id_reserva)
+        tarifa = res.tarifa
 
         if form.is_valid():
             dat = form.cleaned_data
@@ -69,7 +70,7 @@ def recogida_entrega(request, id_coche, id_tarifa):
                 form = forms.crearReserva(dat)
                 return render(request, 'home/recogida.html', {'form' : form})
             else:
-                coche = Coches.objects.get(id = id_coche)
+                coche = res.coche
                 # calcular el precio
                 precio=0
                 if tarifa.tipo=='Por fin de semana':
@@ -81,27 +82,29 @@ def recogida_entrega(request, id_coche, id_tarifa):
                 elif tarifa.tipo=='Por semana':
                     precio=max(get_temporada(dat['fecha_rec']),deadlines(rec, dev, 7))*tarifa.precio
 
-                reserva = Reserva.objects.create(
-                        **dat, 
-                        coche = coche,
-                        oficina_rec = coche.oficina,
-                        tarifa = Tarifas.objects.get(id = id_tarifa),
-                        precio = precio,
-                        usuario = Usuario.objects.get(dni = request.user.username),
-                    )
-                return HttpResponseRedirect(f'/recogida_entrega/pago/{reserva.id}')
+                for ex in res.extra.all():
+                    precio += ex.precio
+
+                res.oficina_rec = coche.oficina
+                res.fecha_rec = dat['fecha_rec']
+                res.fecha_dev = dat['fecha_dev']
+                res.hora_rec = dat['hora_rec']
+                res.hora_dev = dat['hora_dev']
+                res.precio = precio
+                res.save()
+                return HttpResponseRedirect(f'/recogida_entrega/pago/{res.id}')
         else:
             form = forms.crearReserva()
             return render(request, 'home/recogida.html', {'form' : form})
 
 def pago(request, id_reserva):
+    reserva = Reserva.objects.get(id = id_reserva)
     if request.method == 'GET':
         form = forms.Pago()
-        return render(request, 'home/pago.html', {'form': form})
+        return render(request, 'home/pago.html', {'form': form, 'precio': reserva.precio})
     else:
         post = request.POST
         form = forms.Pago(post)
-        reserva = Reserva.objects.get(id = id_reserva)
 
         if form.is_valid():
             dat = form.cleaned_data

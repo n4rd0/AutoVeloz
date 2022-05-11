@@ -12,7 +12,7 @@ class TimeInput(forms.TimeInput):
 
 class Extras(forms.ModelForm):
     class Meta: 
-        model = models.Reserva
+        model = models.Extras
         fields = [ 
                 'extra',
             ]

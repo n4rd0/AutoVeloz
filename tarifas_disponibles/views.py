@@ -1,9 +1,9 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from .models import Tarifas, TiposDeTarifas
 from coches_disponibles.models import Coches
 from account.models import Usuario
-from modificar_reserva.models import Extras
+from modificar_reserva.models import Extras, Reserva
 from . import forms
 #from django.views.decorators.csrf import csrf_exempt
 
@@ -34,9 +34,18 @@ def ver_extras(request, id_coche, id_tarifa):
         return render(request, 'home/extras.html', {'form' : form})
     else:
         post = request.POST
-        print(post['extra'])
-        form = forms.Extras()
-        return render(request, 'home/extras.html', {'form' : form})
+        extras = post.getlist('extra')
+        reserva = Reserva.objects.create(
+                        coche = Coches.objects.get(id = id_coche),
+                        tarifa = Tarifas.objects.get(id = id_tarifa),
+                        usuario = Usuario.objects.get(dni = request.user.username),
+                    )
+        reserva.save()
+        for e in extras:
+            obj = Extras.objects.filter(extra=e)[0]
+            reserva.extra.add(obj)
+            reserva.save()
+        return HttpResponseRedirect(f'/recogida_entrega/{reserva.id}')
 
 
 

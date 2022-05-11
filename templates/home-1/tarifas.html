@@ -37,7 +37,7 @@
                             <h4> Precio de Tarifa {{tarifa.precio}} € </h4>
                             <p>
                                 <i class="fa fa-info" title="Gama"></i> {{tarifa.tipo}} &nbsp;&nbsp;&nbsp;
-								<li><a href= {% url 'recogida_entrega:reserva' id_coche tarifa.id%}> + Seleccionar</a></li>
+								<li><a href= {% url 'tarifas:extras' id_coche tarifa.id%}> + Seleccionar</a></li>
                         </div>
                     </div>
                 </div>
