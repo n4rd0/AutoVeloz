@@ -84,7 +84,6 @@ def recogida_entrega(request, id_reserva):
                 elif tarifa.tipo=='Por semana':
                     precio=max(get_temporada(dat['fecha_rec']),deadlines(rec, dev, 7))*tarifa.precio
 
-<<<<<<< HEAD
                 for ex in res.extra.all():
                     precio += ex.precio
 
