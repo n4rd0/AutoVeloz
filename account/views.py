@@ -5,6 +5,7 @@ from .form import MyUserForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 import re
+from django.contrib import messages
 from .models import Usuario
 
 def register(request):
@@ -21,13 +22,18 @@ def register(request):
                     or not re.match(r'^[A-Z0-9]\d{7}[A-Z]$', post['username']):
                 ok_format = False
                 my_user.cleaned_data['username'] = ''
+                messages.error(request, "DNI no válido")
+
             if post['password'] != post['password_re']:
                 ok_format = False
                 my_user.cleaned_data['password'] = ''
                 my_user.cleaned_data['password_re'] = ''
+                messages.error(request, "Las contraseñas no coinciden")
+
             if not re.match(r'^[a-zA-Z0-9_\.]+@[a-zA-Z0-9]+\.[a-zA-Z]+$', post['email']):
                 ok_format = False
                 my_user.cleaned_data['email'] = ''
+                messages.error(request, "Correo no válido")
 
             if not ok_format:
                 my_user = MyUserForm(my_user.cleaned_data)
@@ -44,6 +50,7 @@ def register(request):
                     user_type = user_type, 
                     auth_user = auth_user,
                 )
+            messages.success(request, "Registrado Correctamente")
             return HttpResponseRedirect('/account/login/')
     else:
         form = MyUserForm()

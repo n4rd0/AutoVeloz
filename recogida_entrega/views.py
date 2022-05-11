@@ -7,6 +7,7 @@ from coches_disponibles.models import Coches
 from modificar_reserva.models import Reserva
 import datetime
 import re
+from django.contrib import messages
 
 def get_temporada(fecha_rec):
     month = fecha_rec.month
@@ -67,6 +68,7 @@ def recogida_entrega(request, id_coche, id_tarifa):
             elif dev <= rec or rec <= datetime.datetime.now():
                 dat['fecha_rec'] = 'invalid'
                 form = forms.crearReserva(dat)
+                messages.error(request, "Seleccione fechas correctas")
                 return render(request, 'home/recogida.html', {'form' : form})
             else:
                 coche = Coches.objects.get(id = id_coche)
@@ -89,6 +91,7 @@ def recogida_entrega(request, id_coche, id_tarifa):
                         precio = precio,
                         usuario = Usuario.objects.get(dni = request.user.username),
                     )
+                messages.success(request, "Reserva Realizada Correctamente")
                 return HttpResponseRedirect(f'/recogida_entrega/pago/{reserva.id}')
         else:
             form = forms.crearReserva()
@@ -109,14 +112,17 @@ def pago(request, id_reserva):
             if not re.match(r'^[0-9]{16}$', dat['tarjeta_credito']):
                 dat['tarjeta_credito'] = ''
                 form = forms.Pago(dat)
+                messages.error(request, "Tarjeta de crédito inválida")
                 return render(request, 'home/pago.html', {'form' : form})
             elif not re.match(r'^[0-9]{3}$', dat['cvv']):
                 dat['cvv'] = ''
                 form = forms.Pago(dat)
+                messages.error(request, "CVV inválido")
                 return render(request, 'home/pago.html', {'form' : form})
             elif dat['fecha_caducidad'] < datetime.date.today():
                 dat['fecha_caducidad'] = ''
                 form = forms.Pago(dat)
+                messages.error(request, "Fecha de caducidad Inválida")
                 return render(request, 'home/pago.html', {'form' : form})
             else:
                 oficina = reserva.oficina_rec
