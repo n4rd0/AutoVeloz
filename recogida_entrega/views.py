@@ -112,15 +112,15 @@ def pago(request, id_reserva):
             if not re.match(r'^[0-9]{16}$', dat['tarjeta_credito']):
                 dat['tarjeta_credito'] = ''
                 form = forms.Pago(dat)
-                return render(request, 'home/pago.html', {'form' : form})
+                return render(request, 'home/pago.html', {'form' : form, 'precio': reserva.precio})
             elif not re.match(r'^[0-9]{3}$', dat['cvv']):
                 dat['cvv'] = ''
                 form = forms.Pago(dat)
-                return render(request, 'home/pago.html', {'form' : form})
+                return render(request, 'home/pago.html', {'form' : form, 'precio': reserva.precio})
             elif dat['fecha_caducidad'] < datetime.date.today():
                 dat['fecha_caducidad'] = ''
                 form = forms.Pago(dat)
-                return render(request, 'home/pago.html', {'form' : form})
+                return render(request, 'home/pago.html', {'form' : form, 'precio': reserva.precio})
             else:
                 oficina = reserva.oficina_rec
                 oficina.facturado += reserva.precio
@@ -130,4 +130,4 @@ def pago(request, id_reserva):
                 return HttpResponseRedirect('/reservas/')
         else:
             form = forms.Pago()
-            return render(request, 'home/pago.html', {'form' : form})
+            return render(request, 'home/pago.html', {'form' : form, 'precio': reserva.precio})
