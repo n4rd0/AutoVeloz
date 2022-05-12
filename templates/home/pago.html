@@ -50,19 +50,31 @@
           {% for message in messages %}
 
           {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
-          <div class="alert alert-success" role="alert" style="text-align:center">
+          <div class="alert alert-success" role="alert" style="text-align:center" id="msg">
           {{ message }}
           </div>
           {% endif %}
 
           {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
-          <div class="alert alert-danger" role="alert" style="text-align:center">
+          <div class="alert alert-danger" role="alert" style="text-align:center" id="msg">
           {{ message }}
           </div>
           {% endif %}
 
           {% endfor %}
           {% endif %}
+
+          <script>
+            setTimeout(function(){
+                if($('#msg').length > 0){
+                        $('#msg').remove();
+                        $('#msg').remove();
+                        $('#msg').remove();
+                        $('#msg').remove();                                            
+                }
+            }, 2000)
+        
+    </script>
 				<button type="submit" id="form-submit" class="main-button">Pagar</button>
 				<br>
 			  </div>
