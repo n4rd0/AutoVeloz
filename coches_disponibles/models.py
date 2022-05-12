@@ -28,11 +28,16 @@ class Coches(models.Model):
      def __str__(self):
         return self.marca + ' ' + self.modelo
      
+class TiposDeOpciones(models.TextChoices):
+    AUTOMATICO = 'Cambio automático'
+    PUERTAS_5 = '5 puertas'
+    TECHO_SOLAR = 'Techo solar'
+
 class Opciones(models.Model):
      coche = models.ForeignKey(
            Coches,
            on_delete = models.CASCADE
      )
-     opcion = models.CharField(max_length = largeText)
+     opcion = models.CharField(max_length = largeText, choices = TiposDeOpciones.choices)
      def __str__(self):
         return str(self.coche) + ' opcion: ' + self.opcion

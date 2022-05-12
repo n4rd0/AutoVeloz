@@ -92,6 +92,7 @@ def recogida_entrega(request, id_reserva):
                 res.fecha_dev = dat['fecha_dev']
                 res.hora_rec = dat['hora_rec']
                 res.hora_dev = dat['hora_dev']
+                precio *= 1 - res.descuento.porcentaje
                 res.precio = precio
                 res.save()
                 messages.success(request, "Reserva realizada correctamente")

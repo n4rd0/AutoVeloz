@@ -33,7 +33,7 @@ class MyUserForm(forms.Form):
         widget = forms.PasswordInput, 
         label = 'Repetir contraseña', 
         max_length = smallText, 
-        error_messages = {'required' : 'Las contraseñas no coinciden'}
+        #error_messages = {'required' : 'Las contraseñas no coinciden'}
         )
 
     user_type = forms.ChoiceField(label = 'Tipo usuario', 

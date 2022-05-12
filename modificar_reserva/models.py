@@ -16,6 +16,12 @@ class Extras(models.Model):
      def __str__(self):
         return self.extra + " " + str(self.precio)
 
+class Descuentos(models.Model):
+     porcentaje = models.FloatField()
+     codigo = models.CharField(max_length = 5, default = '')
+     def __str__(self):
+        return str(self.porcentaje) + " " + self.codigo
+
 class Reserva(models.Model):
      usuario = models.ForeignKey(
           Usuario,
@@ -44,6 +50,11 @@ class Reserva(models.Model):
           on_delete = models.CASCADE,
           null = True
      )
+     descuento = models.ForeignKey(
+          Descuentos,
+          on_delete = models.CASCADE,
+          null = True
+     )
      extra = models.ManyToManyField(Extras)
      opciones = models.ManyToManyField(Opciones)
      fecha_rec = models.DateField(null = True)
@@ -57,8 +68,3 @@ class Reserva(models.Model):
      def __str__(self):
         return f'Coche {self.coche}, Oficina recogida {self.oficina_rec}, Oficina devolución {self.oficina_dev}, Extras {self.extra}'
 
-class Descuentos(models.Model):
-     porcentaje = models.DecimalField(max_digits=3, decimal_places=2)
-     codigo = models.CharField(max_length = 5, default = '')
-     def __str__(self):
-        return str(self.porcentaje) + " " + self.codigo

@@ -18,4 +18,3 @@ def coches_disponibles(request):
         coches = paginator.page(paginator.num_pages)
         
     return render(request, 'home/cochesdisponibles.html',{'coches': coches})
-    

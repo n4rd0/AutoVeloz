@@ -1,10 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Tarifas, TiposDeTarifas
-from coches_disponibles.models import Coches
+from coches_disponibles.models import Coches, Opciones
 from account.models import Usuario
-from modificar_reserva.models import Extras, Reserva
+from modificar_reserva.models import Extras, Reserva, Descuentos
 from . import forms
+from django.contrib import messages
 #from django.views.decorators.csrf import csrf_exempt
 
 
@@ -30,23 +31,35 @@ def ver_extras(request, id_coche, id_tarifa):
     tarifa = Tarifas.objects.get(id = id_tarifa)
 
     if request.method == 'GET':
-        form = forms.Extras()
+        form = forms.ExtrasOpcionesDescuento()
         return render(request, 'home/extras.html', {'form' : form})
     else:
         post = request.POST
         extras = post.getlist('extra')
+        opciones = post.getlist('opcion')
+        descuento = post['descuento']
+        if descuento and not Descuentos.objects.filter(codigo = descuento):
+            form = forms.ExtrasOpcionesDescuento(post)
+            form.descuento = ''
+            messages.error(request, 'Código de descuento erróneo')
+            return render(request, 'home/extras.html', {'form' : form})
+
         reserva = Reserva.objects.create(
                         coche = Coches.objects.get(id = id_coche),
                         tarifa = Tarifas.objects.get(id = id_tarifa),
                         usuario = Usuario.objects.get(dni = request.user.username),
+                        descuento = Descuentos.objects.filter(codigo = descuento)[0] if descuento else ''
                     )
         reserva.save()
         for e in extras:
             obj = Extras.objects.filter(extra=e)[0]
             reserva.extra.add(obj)
             reserva.save()
+        for o in opciones:
+            obj = Opciones.objects.filter(opcion=o)[0]
+            reserva.opciones.add(obj)
+            reserva.save()
         return HttpResponseRedirect(f'/recogida_entrega/{reserva.id}')
-
 
 
 

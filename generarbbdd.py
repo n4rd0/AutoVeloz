@@ -107,7 +107,7 @@ of2.save()
 Descuentos.objects.all().delete()
 
 #Generar dato
-Descuentos(porcentaje = 0.15, codigo = "AUTOV").save()
+Descuentos(porcentaje = 0.9, codigo = "AUTOV").save()
 
 
 #/////////////////EXTRAS/////////////////
@@ -147,8 +147,12 @@ c3.save()
 Opciones.objects.all().delete()
 
 #Generar dato
-opc1 = Opciones(coche=c1, opcion="Opcion disponible para el coche")
+opc1 = Opciones(coche=c1, opcion='Cambio automático')
+opc2 = Opciones(coche=c1, opcion='5 puertas')
+opc3 = Opciones(coche=c1, opcion='Techo solar')
 opc1.save()
+opc2.save()
+opc3.save()
 
 
 #/////////////////RESERVA/////////////////
