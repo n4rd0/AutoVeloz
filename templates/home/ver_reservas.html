@@ -54,12 +54,12 @@
 
                             <p>
                                 {%for e in reserva.extra.all%}
-                                <i class="fa fa-plus-circle" title="Oficina devolución"></i> {{reserva.oficina_dev}} {{e}}&nbsp;&nbsp;&nbsp;
+                                <i class="fa fa-plus-circle" title="Extras de la Reserva"></i> {{e}}€&nbsp;&nbsp;&nbsp;
                                 {%endfor%}
                             </p>    
                             <p>
                                 {%for o in reserva.opciones.all%}
-                                <i class="fa fa-cogs" title="Oficina devolución"></i> {{reserva.oficina_dev}} {{o}}&nbsp;&nbsp;&nbsp;
+                                <i class="fa fa-cogs" title="Ociones Reserva"></i> {{o.opcion}}&nbsp;&nbsp;&nbsp;
                                 {%endfor%}
                             </p>
                             <ul class="social-icons">

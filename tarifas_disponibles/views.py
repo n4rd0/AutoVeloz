@@ -35,16 +35,19 @@ def ver_extras(request, id_coche, id_tarifa):
 
     if request.method == 'GET':
         form = forms.ExtrasOpcionesDescuento()
+        
         return render(request, 'home/extras.html', {'form' : form})
+        
+
     else:
         post = request.POST
         extras = post.getlist('extra')
         opciones = post.getlist('opcion')
         descuento = post['descuento']
         if descuento and not Descuentos.objects.filter(codigo = descuento):
+            messages.error(request, 'Código de descuento erróneo')
             form = forms.ExtrasOpcionesDescuento(post)
             form.descuento = ''
-            messages.error(request, 'Código de descuento erróneo')
             return render(request, 'home/extras.html', {'form' : form})
 
         descuento = descuento if descuento else ''
