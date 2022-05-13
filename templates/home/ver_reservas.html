@@ -34,12 +34,7 @@
                             <img src={{reserva.coche.url}} alt="">
                         </div>
                         <div class="down-content">
-				{%for e in reserva.extra.all%}
-				{{e}}
-				{%endfor%}
-				{%for o in reserva.opciones.all%}
-				{{o}}
-				{%endfor%}
+			
                             <span>{{reserva.tarifa}} {{reserva.precio}}€</span>
                             <h4>{{reserva.coche}}</h4>
                             <p>
@@ -55,6 +50,17 @@
                             
                                 <i class="fa fa-clock-o" title="Hora devolución"></i> {{reserva.hora_dev}} &nbsp;&nbsp;&nbsp;
                               
+                            </p>
+
+                            <p>
+                                {%for e in reserva.extra.all%}
+                                <i class="fa fa-plus-circle" title="Oficina devolución"></i> {{reserva.oficina_dev}} {{e}}&nbsp;&nbsp;&nbsp;
+                                {%endfor%}
+                            </p>    
+                            <p>
+                                {%for o in reserva.opciones.all%}
+                                <i class="fa fa-cogs" title="Oficina devolución"></i> {{reserva.oficina_dev}} {{o}}&nbsp;&nbsp;&nbsp;
+                                {%endfor%}
                             </p>
                             <ul class="social-icons">
                                 <li><a href={% url 'reservas:modificar_reserva' reserva.id %}>Modificar reserva</a></li>
