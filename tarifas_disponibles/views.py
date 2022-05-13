@@ -44,11 +44,14 @@ def ver_extras(request, id_coche, id_tarifa):
             messages.error(request, 'Código de descuento erróneo')
             return render(request, 'home/extras.html', {'form' : form})
 
+        descuento = descuento if descuento else ''
+        if descuento != 'AUTOV':
+            descuento = ''
         reserva = Reserva.objects.create(
                         coche = Coches.objects.get(id = id_coche),
                         tarifa = Tarifas.objects.get(id = id_tarifa),
                         usuario = Usuario.objects.get(dni = request.user.username),
-                        descuento = Descuentos.objects.filter(codigo = descuento)[0] if descuento else ''
+                        descuento = Descuentos.objects.filter(codigo = descuento)[0]
                     )
         reserva.save()
         for e in extras:

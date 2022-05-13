@@ -88,6 +88,7 @@ def recogida_entrega(request, id_reserva):
                     precio += ex.precio
 
                 res.oficina_rec = coche.oficina
+                res.oficina_dev = dat['oficina_dev']
                 res.fecha_rec = dat['fecha_rec']
                 res.fecha_dev = dat['fecha_dev']
                 res.hora_rec = dat['hora_rec']

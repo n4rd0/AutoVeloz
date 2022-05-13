@@ -108,6 +108,7 @@ Descuentos.objects.all().delete()
 
 #Generar dato
 Descuentos(porcentaje = 0.9, codigo = "AUTOV").save()
+Descuentos(porcentaje = 0, codigo = "").save()
 
 
 #/////////////////EXTRAS/////////////////
