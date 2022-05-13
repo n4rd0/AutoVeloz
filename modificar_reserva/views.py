@@ -26,6 +26,7 @@ def ver_reservas(request):
     
     return render(request, 'home/ver_reservas.html', {'reservas' : reservas})
 
+@login_required
 def modificar_reserva(request, id_reserva):
     reserva = Reserva.objects.get(id = id_reserva)
     tipo_usuario = Usuario.objects.get(dni = request.user.username).user_type

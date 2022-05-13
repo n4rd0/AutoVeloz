@@ -8,6 +8,7 @@ from modificar_reserva.models import Reserva
 import datetime
 import re
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 def get_temporada(fecha_rec):
     month = fecha_rec.month
@@ -45,6 +46,7 @@ def deadlines(fecha, fecha_dev, semanas = 1):
 
 # Create your views here.
 
+@login_required
 def recogida_entrega(request, id_reserva):
     if request.method == 'GET':
         form = forms.crearReserva()
@@ -102,6 +104,7 @@ def recogida_entrega(request, id_reserva):
             form = forms.crearReserva()
             return render(request, 'home/recogida.html', {'form' : form})
 
+@login_required
 def pago(request, id_reserva):
     reserva = Reserva.objects.get(id = id_reserva)
     if request.method == 'GET':

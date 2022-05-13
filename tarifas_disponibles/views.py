@@ -6,12 +6,14 @@ from account.models import Usuario
 from modificar_reserva.models import Extras, Reserva, Descuentos
 from . import forms
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 #from django.views.decorators.csrf import csrf_exempt
 
 
 # Create your views here.
 
 #@csrf_exempt
+@login_required
 def tarifas_disponibles(request, id_coche):
     tipo_usuario = Usuario.objects.get(dni = request.user.username).user_type
     coche = Coches.objects.get(id = id_coche)
@@ -26,6 +28,7 @@ def tarifas_disponibles(request, id_coche):
 
     return render(request, 'home-1/tarifas.html', {'tarifas' : tarifas, 'id_coche' : id_coche,'extras' : extras})
 
+@login_required
 def ver_extras(request, id_coche, id_tarifa):
     coche = Coches.objects.get(id = id_coche)
     tarifa = Tarifas.objects.get(id = id_tarifa)
