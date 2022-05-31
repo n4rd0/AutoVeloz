@@ -1,0 +1,123 @@
+{% extends "home/navbar.html" %}
+{% load static %}
+
+    {% block title %} Programar Recogida | Auto veloz{% endblock %}
+
+    {% block content %}
+
+	<style>   
+        .main-button {
+      display: inline-block;
+      font-size: 15px;
+      padding: 10px 15px;
+      background-color: #ed563b;
+      color: #fff;
+      border-radius:4px;
+      border:0px;
+      text-align: center;
+      font-weight: 400;
+      text-transform: uppercase;
+      transition: all .3s;
+    }
+
+    .main-button:hover {
+      background-color: #f9735b;
+      color: #fff;
+    }
+
+    .trainer-item{
+        text-align: right;
+    }
+    </style>
+
+
+
+   <!-- ***** Fleet Starts ***** -->
+   <section class="section section-bg" id="call-to-action" style="background-image: url({% static 'assets/images/banner-image-1-1920x500.jpg' %})">
+	<section class="section" id="trainers" style="margin-top:10%">
+		<div class="wrapper"> 
+			<div class="container">
+				<div class="row">
+					<div class="trainer-item" style="margin-left:auto;margin-right:auto">
+						<h2 class="text-center">Método de Pago</h2>
+            <h6 class="text-center">Cantidad a Pagar: {{precio}}</h6>
+
+						<br>
+				<form class = 'site-form' method="post">
+					{% csrf_token %}
+					{{form.as_p}}
+          {% if messages %}
+          {% for message in messages %}
+
+          {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+          <div class="alert alert-success" role="alert" style="text-align:center" id="msg">
+          {{ message }}
+          </div>
+          {% endif %}
+
+          {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+          <div class="alert alert-danger" role="alert" style="text-align:center" id="msg">
+          {{ message }}
+          </div>
+          {% endif %}
+
+          {% endfor %}
+          {% endif %}
+
+          <script>
+            setTimeout(function(){
+                if($('#msg').length > 0){
+                        $('#msg').remove();
+                        $('#msg').remove();
+                        $('#msg').remove();
+                        $('#msg').remove();                                            
+                }
+            }, 5000)
+        
+    </script>
+				<button type="submit" id="form-submit" class="main-button">Pagar</button>
+				<br>
+			  </div>
+		  </div>
+	  </div>
+  </div>
+</section>
+</section>
+
+</form>
+     
+    </section>
+    <!-- ***** Fleet Ends ***** -->
+    {% endblock %}
+
+
+<!-- <form class = 'site-form' method="post" >
+    		{% csrf_token %}
+		{{form.as_p}}
+      	<button type="submit">Reservar</button>
+
+   
+    
+    <section class="section section-bg" id="call-to-action" style="background-image: url({% static 'assets/images/banner-image-1-1920x500.jpg' %})">
+        <section class="section" id="trainers" style="margin-top:10%">
+            <div class="wrapper"> 
+                <div class="container">
+                    <div class="row">
+                        <div class="trainer-item" style="margin-left:auto;margin-right:auto">
+                            <h2 class="text-center">Iniciar sesión</h2>
+                            <br>
+                            <form method="post" style="text-align:right">
+                              {% csrf_token %}
+                              {{ form.as_p }}
+                            <button type="submit" id="form-submit" class="main-button">Iniciar sesión</button>
+                            </form>
+                            <br>
+                            <p class="fz-12 fw-medium mb-5 text-center">Si no tienes cuenta, puedes crear una en <a href="{% url 'account:register' %}">Registro</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+	</form>-->
