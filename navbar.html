@@ -1,0 +1,37 @@
+{% extends "home/base.html" %}
+
+
+{% block body %}
+<header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <!-- ***** Logo Start ***** -->
+                    <a href="/home/" class="logo">Auto<em> Veloz</em></a>
+                    <!-- ***** Logo End ***** -->
+                    <!-- ***** Menu Start ***** -->
+                    <ul class="nav">
+                        <li><a href="/home/">Inicio</a></li>
+                        <li><a href="/coches_disponibles/">Coches disponibles</a></li>
+                        <li><a href="/reservas/">Reservas</a></li>
+                        {% if user.is_authenticated %}
+                            <li><a href="{% url 'account:logout' %}">Cerrar sesión</a></li>
+                        {% else %}
+                            <li><a href="{% url 'account:login' %}">Iniciar sesión</a></li> 
+                            <li><a href="{% url 'account:register' %}">Registro</a></li> 
+                        {% endif %}
+                    </ul>        
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+                    <!-- ***** Menu End ***** -->
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+{% block content %}
+{% endblock %}
+
+{% endblock %}
